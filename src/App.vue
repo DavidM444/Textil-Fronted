@@ -7,8 +7,8 @@
             
             <div class="menu">
                 <ul>
-                    <li class="list active">
-                        <a href="https://www.youtube.com/">
+                    <li v-if="isAuth" class="list active">
+                        <a href="#">
                             <span class="icon">
                                 <ion-icon name="home-outline"></ion-icon>
                             </span>
@@ -67,27 +67,13 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div class="centro">
             
                 algljk
                 dafdjkfla
                 fadfndfa
                 ffdsnfmdaf
+                daklfjdklfakldc
 
             
 
@@ -107,17 +93,37 @@
   
 </template>
 
-
 <script>
-  
-    export default{
-        name:"App"
+  export default {
+    name:"App",
+    
 
-    }
+    data: function(){
+        return{
+            isAuth: false
+        }
+
+    },
+    methods: {
+
+    },
+    created: function(){
+        
+
+    },
     
-    
+  }
+  const list = document.querySelectorAll('.list');
+        function activeLink(){
+            list.forEach((item) =>
+            item.classList.remove('active'));
+            this.classList.add('active');
+        }
+        list.forEach((item) =>
+        item.addEventListener('click', activeLink))
+   
+
 </script>
-
 
 
 
@@ -158,11 +164,11 @@
     {
         
         position: relative;
-        left: 800px;
-        width: 400px;
-        height: 60px;
+        left: 900px;
+        width:300px;
+        height: 90px;
         display: flex;
-        top: 40px;
+        top: 20px;
        
         background-color: rgb(58, 142, 170);
         
@@ -178,7 +184,7 @@
     {
        
         display:flex;
-        width: 200px;
+        width: 240px;
 
     }
     .menu ul li{
@@ -229,40 +235,7 @@
         transform: translateY(10px);
 
     }
-    .indicator {
-        position: absolute;
-        top: -60%;
-        left: 114px;
-        width: 42px;
-        height: 47px;
-        background: chartreuse;
-        border-radius: 50%;
-        border: 6px solid var(--clr);
-        transition: 0.5s;
-        
-    }
-    .indicator::before {
-        content: '';
-        position: absolute;
-        top: 30px;
-        left:-20px;
-        width: 20px;
-        height: 20px;
-        background: transparent;
-        border-top-right-radius: 20px;
-        box-shadow: 0px -10px 0 0 blueviolet;
-    }
-    .indicator::after {
-        content: '';
-        position: absolute;
-        top: 30px;
-        right:-20px;
-        width: 20px;
-        height: 20px;
-        background: transparent;
-        border-top-left-radius: 20px;
-        box-shadow: 0px -10px 0 0 blueviolet;
-    }
+    
 
 
 
@@ -316,6 +289,7 @@
 
 
 </style>
+
 
 
 

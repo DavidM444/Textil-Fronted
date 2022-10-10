@@ -1,5 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './App.vue'
+import Login from './components/Login.vue'
+import SingUp from './components/SingUp.vue'
 
 const routes = [
   {
