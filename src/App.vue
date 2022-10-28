@@ -1,96 +1,44 @@
 <template>
     <div id="app">
         <div class="cabecera">
-            <div class="titulo">
-                <h2>Nova Text Quality Sistem</h2> 
-            </div>
+           
+            <h2>Nova Text Quality Sistem</h2> 
             
             <div class="menu">
-                <ul>
-                    <li v-if="isAuth" class="list active">
-                        <a href="#">
-                            <span class="icon">
-                                <ion-icon name="home-outline"></ion-icon>
-                            </span>
-                            <span class="text">Home</span>
-                        </a>
-                    </li>
-
-                    <li class="list">
-                        <a href="#">
-                            <span class="icon">
-                                <ion-icon name="log-in-outline"></ion-icon>
-                            </span>
-                            <span class="text">login</span>
-                        </a>
-
-                    </li>
-
-                    <li class="list">
-                        <a href="#">
-                            <span class="icon">
-                                <ion-icon name="person-add-outline"></ion-icon>
-                            </span>
-                            <span class="text">Sing Up</span>
-                        </a>
-
-                    </li>
-                    <li class="list">
-                        <a href="#">
-                            <span class="icon">
-                                <ion-icon name="log-out-outline"></ion-icon>
-                            </span>
-                            <span class="text">Close Sesion</span>
-                        </a>
-
-                    </li>
-
-                    <li class="list">
-                        <a href="#">
-                            <span class="icon">
-                                <ion-icon name="business-outline"></ion-icon>
-                            </span>
-                            <span class="text">About Us</span>
-                        </a>
-
-                    </li>
-                    <div class="indicator"></div>
-                    
-                </ul>
-
+        
+                <nav>
+                    <button v-if="isAuth" v-on:click="loadHome">Home</button>
+                    <button v-if="isAuth" v-on:click="loadInventario">Inventario</button>
+                    <button v-if="!isAuth" v-on:click="loadLogin">Login</button>
+                    <button v-if="!isAuth" v-on:click="loadSingUp">SingUp</button>
+                    <button v-if="isAuth" v-on:click="loadCloseSesion">Closesesion</button>
+                </nav>
+                
             </div>
-        </div>
-
-
-
-
-
-
-
-        <div class="centro">
             
-                algljk
-                dafdjkfla
-                fadfndfa
-                ffdsnfmdaf
-                daklfjdklfakldc
+        </div>
+        
 
+        <div class="main-component">
+        <router-view  
+            v-on:completedLogIn="completedLogIn"
+            v-on:completedSignUp="completedSignUp"
             
-
+        >
+        </router-view>
         </div>
-        <div class="inferior">
-            contacto
-
-        </div>
-
-
     
+    
+        <div class="footer">
+            <h2>Protela Text</h2>
+
+
+        </div>
+
+
+
     </div>
     
-    
-   
-    
-  
 </template>
 
 <script>
@@ -100,27 +48,57 @@
 
     data: function(){
         return{
-            isAuth: false
+            isAuth: false 
         }
 
     },
     methods: {
+        verifyAuth: function(){
+            if(this.isAuth==false){
+                this.$router.push({name: 'login'});
+            }
+        },
+
+        loadHome: function(){
+            this.$router.push({name: 'home'});
+
+
+        },
+        loadLogin: function(){
+            this.$router.push({name: 'login'});
+
+        },
+        loadSingUp: function(){
+            this.$router.push({name: 'SingUp'})
+
+        },
+        loadCloseSesion: function(){
+
+        },
+        loadInventariot: function(){
+            this.$router.push({name: 'inventario'});
+
+
+        },
+        completedLogIn: function(data){
+            localStorage.setItem('username', data.username);
+            localStorage.setItem('token_access', data.token_access);
+            localStorage.setItem('token_refresh', data.token_refresh);
+            alert("autenticacion validada!!!")
+
+        },
+        completedSingUp: function(){
+
+        },
 
     },
     created: function(){
-        
+        this.verifyAuth()
 
     },
     
   }
-  const list = document.querySelectorAll('.list');
-        function activeLink(){
-            list.forEach((item) =>
-            item.classList.remove('active'));
-            this.classList.add('active');
-        }
-        list.forEach((item) =>
-        item.addEventListener('click', activeLink))
+
    
 
 </script>
@@ -133,139 +111,93 @@
     
     body{
         max-width: 0 0 0 0;
-        background-color: blueviolet;
+        
         display: flex;
     }
-    :root
-    {
-        --clr: #222327;
-    }
+   
 
     .cabecera {
         position:relative;
-        background-color: aquamarine;
+        background-color: blue;
+        display: flex;
         
-        width:1500px;
+        width:1700px;
         height: 149px;
+        
 
         
     }
 
-    .titulo
+    .cabecera h2
     {
         position: relative;
         width: 300px;
         top: 20px;
         float: left;
         left: 30px;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
     }
-   
-    .menu
-    {
-        
+    .menu{
+        background-color: white;
+        width: 500px;
+        height: 60px;
         position: relative;
         left: 900px;
-        width:300px;
-        height: 90px;
-        display: flex;
-        top: 20px;
-       
-        background-color: rgb(58, 142, 170);
+        top: 10px;
         
-        justify-content:center;
-        align-items:center;
-        border-radius: 10px;
-        
-    
-       
-
-    }
-    .menu ul
-    {
-       
-        display:flex;
-        width: 240px;
-
-    }
-    .menu ul li{
-        position: relative;
-        list-style: none;
-        width: 80px;
-        height: 70px;
-        z-index: 1;
         
     }
-
-    .menu ul li a {
-        position: relative;
-        display: flex;
+   
+    .menu nav{
+        background-color: rgb(196, 196, 196);
+        
         justify-content: center;
+
         align-items: center;
-        flex-direction: column;
-        width: 100;
-        text-align: center;
-        font-weight: 500;
-    }
-    .menu ul li a .icon {
-        position: relative;
-        display: block;
-        line-height: 75px;
-        font-size: 1.5em;
-        text-align: center;
-        transition: 0.5s;
-        color: var(--clr);
-
-    }
-    .menu ul li.active a .icon {
-        transform: translateY(-32px);
-    }
-
-    .menu ul li a .text{
-        position: absolute;
-        color: var(--clr);
-        font-weight: 400;
-        font-size: 0.85em;
-        letter-spacing: 0.05em;
-        transition: 0.5s;
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    .menu ul li.active a .text{
-        opacity: 1;
-        transform: translateY(10px);
-
-    }
+        border: 2px solid chocolate;
+        display: flex;
+        height: 100%;
+        
     
+        
+        
 
+    }
+    .menu nav button {
+        display: flex;
+        font-size: 18px;
+        border: 2px solid yellow;
+        border-radius: 4px;
 
-
-    .menu ul li:nth-child(1).active ~ .indicator
-    {
-        transform: translateX(calc(30px * 0));
+        background-color: greenyellow;
     }
 
-    .menu ul li:nth-child(2).active ~ .indicator
+    .menu nav button:hover 
     {
-        transform: translateX(calc(40px * 1));
-    }
-    .menu ul li:nth-child(3).active ~ .indicator
-    {
-        transform: translateX(calc(40px * 2));
-    }
-    .menu ul li:nth-child(4).active ~ .indicator
-    {
-        transform: translateX(calc(40px * 3));
-    }
-    .menu ul li:nth-child(5).active ~ .indicator
-    {
-        transform: translateX(calc(40px * 4));
+        color: rgb(253, 253, 253);
+        background: rgb(0, 0, 0);
+        border: 2px solid rgb(247, 251, 247);
     }
 
 
+    .main-component{
+        height: 60vh;
+        margin: 0%;
+        padding: 0%;
+        background: cyan;
+    }
+    .main-component h3 {
+        font-family: cursive;
+        font-size: 39px;
+    }
 
-
-
-
+    .footer {
+        height: 21vh;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        background-color: blueviolet;
+    }
 
 
 
@@ -276,18 +208,7 @@
 
 /* Estilos para el titulo de la cabecera*/
 
-    .centro {
-        background-color: rgb(239, 239, 239);
-        width: auto;
-        height: 100px;
-    }
-    .inferior {
-        background-color: rgb(152, 170, 15);
-        width: auto;
-        height:100px;
-    }
-
-
+    
 </style>
 
 
