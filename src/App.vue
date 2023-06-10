@@ -11,7 +11,7 @@
                     <button v-if="isAuth" v-on:click="loadInventario">Inventario</button>
                     <button v-if="!isAuth" v-on:click="loadLogin">Login</button>
                     <button v-if="!isAuth" v-on:click="loadSingUp">SingUp</button>
-                    <button v-if="isAuth" v-on:click="loadCloseSesion">Closesesion</button>
+                    <button v-if="isAuth" v-on:click="loadCloseSesion">CloseSesion</button>
                 </nav>
                 
             </div>
@@ -22,7 +22,7 @@
         <div class="main-component">
         <router-view  
             v-on:completedLogIn="completedLogIn"
-            v-on:completedSignUp="completedSignUp"
+            v-on:completedSingUp="completedSingUp"
             
         >
         </router-view>
@@ -54,8 +54,12 @@
     },
     methods: {
         verifyAuth: function(){
-            if(this.isAuth==false){
+            this.isAuth = localStorage.getItem("isAuth") || false;
+            if(this.isAuth == false){
                 this.$router.push({name: 'login'});
+            }
+            else{
+                this.loadHome();
             }
         },
 
@@ -73,25 +77,33 @@
 
         },
         loadCloseSesion: function(){
+            localStorage.clear();
+            alert('sesion terminada')
+            this.verifyAuth();
 
         },
-        loadInventariot: function(){
+        loadInventario: function(){
             this.$router.push({name: 'inventario'});
 
 
         },
         completedLogIn: function(data){
-            localStorage.setItem('username', data.username);
-            localStorage.setItem('token_access', data.token_access);
-            localStorage.setItem('token_refresh', data.token_refresh);
+            localStorage.setItem("username", data.username);
+            localStorage.setItem("tokenAccess", data.tokenAccess);
+            localStorage.setItem("tokenRefresh", data.tokenRefresh);
+            localStorage.setItem("isAuth",true);
             alert("autenticacion validada!!!")
+            this.verifyAuth();
 
         },
-        completedSingUp: function(){
+        completedSingUp: function(data){
+            this.completedLogIn(data);
 
         },
+
 
     },
+
     created: function(){
         this.verifyAuth()
 

@@ -8,7 +8,7 @@ import Home from './components/Home.vue'
 
 const routes = [
   {
-    path: '',
+    path: '/',
     name: 'root',
     component: App
   },
