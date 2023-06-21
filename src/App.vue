@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app" class="contenedor container-fluid">
         <div class="cabecera">
             <div class="titulo">
                 <h2>Nova Text Quality Sistem</h2> 
@@ -125,10 +125,8 @@
 
 <style>
     
-    body{
-        max-width: 0 0 0 0;
-        background-color: blueviolet;
-        display: flex;
+    .contenedor{
+        background-color: chocolate;
     }
     :root
     {
@@ -136,33 +134,17 @@
     }
 
     .cabecera {
-        position:relative;
-        background-color: aquamarine;
-        
-        width:1500px;
-        height: 149px;
+        background-color:transparent;;
+
 
         
     }
 
-    .titulo
-    {
-        position: relative;
-        width: 300px;
-        top: 20px;
-        float: left;
-        left: 30px;
-    }
+    
    
     .menu
     {
-        
-        position: relative;
-        left: 800px;
-        width: 400px;
-        height: 60px;
-        display: flex;
-        top: 40px;
+    
        
         background-color: rgb(58, 142, 170);
         
@@ -178,7 +160,6 @@
     {
        
         display:flex;
-        width: 200px;
 
     }
     .menu ul li{
@@ -304,12 +285,12 @@
 /* Estilos para el titulo de la cabecera*/
 
     .centro {
-        background-color: rgb(239, 239, 239);
+
         width: auto;
         height: 100px;
     }
     .inferior {
-        background-color: rgb(152, 170, 15);
+
         width: auto;
         height:100px;
     }
