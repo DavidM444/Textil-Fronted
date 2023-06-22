@@ -1,0 +1,199 @@
+<template>
+    <div onload="interval()">
+    
+        <div class="col d-flex head">
+            <div class="container-fluid pt-3 ">
+                <div class="d-flex logo">
+                    <img class="img-fluid mx-3 mb-3" src="img/T.png" alt="">
+                    <h1 class="red">QualityTex</h1>
+                
+                </div>
+            </div>
+            <div class="user">
+                <div class="d-flex">
+                    <span class="material-symbols-outlined">person</span>
+                    <p>Nombre de Usuario</p>
+                </div>
+                <div class="d-flex">
+                    <span class="material-symbols-outlined">groups</span>
+                    <p>Cargo</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="d-flex text-center justify-content-center oper">
+
+            <div class="mx-4 mt-4 open-popup " data-popup-target="popup-1" >
+                <p>Crear nuevo registro de Tela</p>
+                <button class="btn btn-primary open-popup" data-popup-target="popup-1">Abrir formulario</button>
+            </div>
+
+            <div class="mx-4 mt-4">
+                <p>Gestor de datos</p>
+                <a name="" class="btn btn-primary container-fluid" href="Est-datos/Datos.html" role="button">Gestionar</a>
+            </div>
+
+
+        <div class="mx-4 mt-4">
+            <p>Graficos del Sistema</p>
+            <a name="" id="" class="btn btn-primary container-fluid" href="Est-datos/Est.html" role="button">Estadisticas</a>
+        </div>
+        </section>
+
+        <div class="popup-overlay container-fluid" id="popup-overlay"></div>
+
+        <div class="popup" id="popup-1">
+            <h2>Formulario de Calidad de Tela</h2>
+            <div class="container">
+            
+                
+                <form class="row" id="form"> 
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="Rollo">Rollo</label>
+                            <input type="text" id="rollo" name="rollo" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="peso">Peso</label>
+                            <input type="text" id="peso" name="peso" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Escala grises">Grises</label>
+                            <input type="text" id="tipoTela" name="tipoTela" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="proveeddor">Provedor</label>
+                            <select id="tacos" name="tacos">
+                                <option value="TextilNova">TextilNova</option>
+                                <option value="TelasMundo">TelasMundo</option>
+                                <option value="EleganceFabrics">EleganceFabrics</option>
+                                <option value="FashionFabrics">FashionFabrics</option>
+                                <option value="GlobalTextiles">GlobalTextiles</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fecha">Fecha de Registro:</label>
+                            <input type="date" id="fecha" name="fecha" required>
+                        </div>
+                    
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="gramaje">Gramaje</label>
+                            <input type="number" id="gramaje" name="gramaje"  required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nivelGrises">Nivel Grises:</label>
+                            <input type="number" id="nivelGrises" name="nivelGrises" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nivelPilling">Nivel Pilling:</label>
+                            <input type="number" id="nivelPilling" name="nivelPilling"  required>
+                        </div>
+                        <div class="form-group">
+                            <label for="absorcion">Absorcion:</label>
+                            <input type="number" id="absorcion" name="absorcion"  required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cuatropuntos">Cuatro Puntos:</label>
+                            <input type="number" id="cuatropuntos" name="cuatropuntos" required>
+                        </div>
+                        
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Dimensiones</label>
+                        
+                            <input class="col-lg-8" type="number" name="ancho" id="ancho" placeholder="ancho">
+                            <input type="number" name="alto" id="alto" placeholder="alto">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="tipoTela">Tip Tela</label>
+                            <select name="telas" id="telas">
+                                <option>algodon</option>
+                                <option>lino</option>
+                                <option value="">Seda</option>
+                                <option value="">Lana</option>
+                                <option value="">Pliester</option>
+                                <option value="">Nylon</option>
+                                <option value="">Denim</option>
+                                <option value="">Terciopelo</option>
+                                <option value="">Saten</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="color">Color</label>
+                            <select name="colores" id="color">
+                                <option>azul</option>
+                                <option>rojo</option>
+                                <option value="">verde</option>
+                                <option value="">negro</option>
+                                <option value="">amarillo</option>
+                                <option value="">blanco</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </form>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" form="form">Guardar</button>
+                    <button class="btn btn-danger close-popup">Cerrar</button>
+                </div>
+            </div>          
+        </div>
+    
+        <section class="container-fluid imagenes">
+            <div class="rot d-flex justify-content-center">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body d-flex">
+                    
+                    <p class="card-text">Nuestro compromiso con la calidad en la producción textil se refleja en cada prenda</p>
+                    
+                    </div>
+                </div>
+                
+            
+                <img class="img-fluid d-flex" src="img/knit-g6e83076f5_640.jpg" alt="Imagen" id="slide">
+                
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body d-flex">
+                    
+                    <p class="card-text">Nuestras telas cumplen con los estándares más altos de calidad, para garantizar la satisfacción de nuestros clientes.</p>
+                    
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            
+            <div class="container-lg" >
+                <div class="row container">
+                    <div style="max-width: 40em;">
+                        <img src="img/pexels-jeshootscom-530024.jpg" class="img-fluid rounded-start mx-auto" alt="...">
+                    </div>
+                        
+                    <div class="row">
+                        <h3>Registro Textil</h3>
+                        <p class="card-text">
+                        Los registros de calidad textil son una herramienta fundamental para garantizar la satisfacción del cliente y el éxito de la empresa. Estos registros permiten evaluar y registrar los aspectos más importantes de la calidad de la tela, como la resistencia, la uniformidad, la textura, el color, entre otros.
+                        El proceso de registro de calidad textil comienza desde la selección de la materia prima, asegurando que cumpla con los estándares requeridos para el producto final. Luego, se realizan pruebas y evaluaciones a lo largo del proceso de producción para detectar y corregir posibles defectos o problemas en la calidad de la tela. Estas pruebas incluyen la medición de la resistencia, la uniformidad del tejido, la textura, la alineación de la puntada, entre otras.
+                        Una vez que la tela ha sido producida, se realiza una evaluación final para asegurarse de que cumple con los requisitos de calidad establecidos. Si se encuentran defectos o problemas, se realizan las correcciones necesarias antes de que la tela sea enviada al cliente.
+                        Los registros de calidad textil permiten a la empresa tener un control riguroso sobre el proceso de producción, detectar y corregir problemas de calidad de manera temprana, y garantizar que el producto final cumpla con los requisitos y expectativas del cliente. Además, estos registros pueden ser utilizados para hacer mejoras en el proceso de producción y en la calidad del producto a largo plazo, lo que puede resultar en una mayor satisfacción del cliente y un aumento de la rentabilidad de la empresa. En resumen, los registros de calidad textil son esenciales para asegurar la calidad y el éxito de la empresa en el mercado textil.
+                        </p>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </footer>
+    
+    </div>
+
+</template>
