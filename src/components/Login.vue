@@ -18,8 +18,7 @@
                                 <img class="m-3" src="img/icons8-apple-logo-64.png" alt="Card image cap">
                             
                             </div>
-                
-                           
+
                         </div>
                     </div>
 
@@ -35,12 +34,13 @@
                             </div>
                             <div class="text-center">
                                   <button type="submit" class="btn btn-primary mt-3 ">Iniciar sesión</button>
+                                
                             </div>
                           
                         </form>
                     </div>
                     <div class="pt-5">
-                        <!--p class="fs-6 ">No estas registradado? <a href="/SingUp.html">Registrarse</a><p/>-->
+                      <p class="fs-6 ">No estas registradado?  <router-link to="/singup">Registrarse</router-link></p>
                     </div>
 
                      <div class="f1">
@@ -61,6 +61,8 @@
            
         </div>
     </div>
+
+           
 </template>
 
 <style>
@@ -126,5 +128,8 @@
 
 
 <script>
+export default{
+  name: "Login"
+}
 console.log("entranod a login")
 </script>

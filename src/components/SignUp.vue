@@ -43,4 +43,10 @@
             </section>
         </div>
     </div>
+   
 </template>
+<script>
+export default{
+    name: "Singup"
+}
+</script>
