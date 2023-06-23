@@ -1,10 +1,10 @@
-<template>
-    <div onload="interval()">
+<template >
+    <div onload="interval()" class="container-fluid">
     
         <div class="col d-flex head">
             <div class="container-fluid pt-3 ">
                 <div class="d-flex logo">
-                    <img class="img-fluid mx-3 mb-3" src="img/T.png" alt="">
+                    <img class="img-fluid mx-3 mb-3" src="../assets/img/T.png" alt="">
                     <h1 class="red">QualityTex</h1>
                 
                 </div>
@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <section class="d-flex text-center justify-content-center oper">
+        <section class="d-flex text-center justify-content-center oper col">
 
             <div class="mx-4 mt-4 open-popup " data-popup-target="popup-1" >
                 <p>Crear nuevo registro de Tela</p>
@@ -30,14 +30,12 @@
 
             <div class="mx-4 mt-4">
                 <p>Gestor de datos</p>
-                <a name="" class="btn btn-primary container-fluid" href="Est-datos/Datos.html" role="button">Gestionar</a>
+                <router-link class="btn btn-primary container-fluid" to="/datos">Registrar</router-link>              
             </div>
-
-
-        <div class="mx-4 mt-4">
-            <p>Graficos del Sistema</p>
-            <a name="" id="" class="btn btn-primary container-fluid" href="Est-datos/Est.html" role="button">Estadisticas</a>
-        </div>
+            <div class="mx-4 mt-4">
+                <p>Graficos del Sistema</p>
+                <router-link class="btn btn-primary container-fluid" to="/grafico">Estadisticas</router-link>
+            </div>
         </section>
 
         <div class="popup-overlay container-fluid" id="popup-overlay"></div>
@@ -45,8 +43,6 @@
         <div class="popup" id="popup-1">
             <h2>Formulario de Calidad de Tela</h2>
             <div class="container">
-            
-                
                 <form class="row" id="form"> 
                     <div class="col">
                         <div class="form-group">
@@ -159,7 +155,7 @@
                 </div>
                 
             
-                <img class="img-fluid d-flex" src="img/knit-g6e83076f5_640.jpg" alt="Imagen" id="slide">
+                <img class="img-fluid d-flex" src="../assets/img/knit-g6e83076f5_640.jpg" alt="Imagen" id="slide">
                 
                 <div class="card" style="width: 18rem;">
                     <div class="card-body d-flex">
@@ -176,7 +172,7 @@
             <div class="container-lg" >
                 <div class="row container">
                     <div style="max-width: 40em;">
-                        <img src="img/pexels-jeshootscom-530024.jpg" class="img-fluid rounded-start mx-auto" alt="...">
+                        <img src="../assets/img/pexels-jeshootscom-530024.jpg" class="img-fluid rounded-start mx-auto" alt="...">
                     </div>
                         
                     <div class="row">
@@ -197,3 +193,147 @@
     </div>
 
 </template>
+
+<script>
+
+export default{
+    name: "Work",
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const openPopupButton = document.querySelector(".open-popup");
+  const closePopupButton = document.querySelector(".close-popup");
+  const overlay = document.getElementById("popup-overlay");
+
+  openPopupButton.addEventListener("click", function() {
+    const target = openPopupButton.getAttribute("data-popup-target");
+    const popup = document.getElementById(target);
+    popup.style.display = "block";
+    overlay.style.display = "block";
+  });
+
+  closePopupButton.addEventListener("click", function() {
+    const popup = closePopupButton.closest(".popup");
+    popup.style.display = "none";
+    overlay.style.display = "none";
+  });
+});
+   
+</script>
+
+
+<style lang="scss">
+
+$green-dark:  #006E51;
+$marron: #87CBB9;
+$green-dark:  #006E51;
+.logo{
+    img{
+        max-width: 100px;
+        height: auto;
+        border-radius: 20%;
+    }
+    h1{
+      font-family: 'Cormorant SC', serif;
+      color:$green-dark; 
+    }
+  
+  }
+
+.head{
+    background-color:$marron;
+  }
+  
+  .rot{
+    background-color: #006E51;
+
+    img{  
+      box-shadow: 0px -1px 39px 26px rgba(0,0,0,0.48);
+      height: 22rem;
+      width: 35rem;
+      margin: 2%;
+    }
+  }
+  .imagenes{
+    background-color: $marron;
+    margin:auto;
+    
+  }
+  
+  .oper{
+    background-color: #d4aaff;
+    flex-wrap:wrap-reverse;
+  }
+  footer{
+    background-color: #bdd1de;
+  }
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(195, 206, 112, 0.87);
+    z-index: 9999;
+    overflow-y: auto;
+  }
+.popup {
+    display: none;
+    position:fixed;
+    width: 50%;
+    top: 2%;
+    left: 2%;
+    transform: translate(0%, 0%);
+    background-color: #f0fb59;
+    z-index: 10000;
+    overflow-y: auto;
+    border-radius: 3%;
+  }
+
+  /* estilos del formmulario*/
+  form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+
+    margin-bottom: 20px;
+    label{
+    margin-bottom: 5px;
+    }
+    button{
+      padding: 10px 20px;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #abcbc3;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+.card-body{
+  background-color: #bdf7f4;
+}
+
+
+
+
+</style>
