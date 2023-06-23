@@ -1,17 +1,46 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import App from './App.vue'
+import { createRouter, createWebHistory } from 'vue-router'
+
+import SingUp from './components/SignUp.vue'
+import Login from './components/Login.vue'
+import Work from './components/Work.vue'
+import Datos from './components/Datos.vue'
+import Grafico from './components/Grafico.vue'
 
 const routes = [
+  
   {
     path: '/',
-    name: 'root',
-    component: App
+    name: 'login',
+    component: Login
+  },
+
+  {
+    path: '/singup',
+    name: 'Singup',
+    component: SingUp
+  },
+  {
+    path:'/work',
+    name:'work',
+    component:Work
+  },
+  {
+    path:'/datos',
+    name: 'datos',
+    component: Datos
+
+  },
+  {
+    path:'/grafico',
+    name: 'grafico',
+    component: Grafico
+
   }
 
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history:createWebHistory(),
   routes
 })
 
