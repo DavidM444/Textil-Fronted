@@ -4,7 +4,7 @@
             <div class="col">
                 <div class="container-fluid pt-3">
                     <div class="d-flex logo">
-                        <img class="img-fluid mx-3" src="img/T.png" alt="">
+                        <img class="img-fluid mx-3" src="../assets/img/T.png" alt="">
                         <h1 class="mt-2">QualityTex</h1>
 
                     </div>
@@ -13,9 +13,9 @@
                         <div class="card login">
                             <h2 class="text-center">Inicia Sesion</h2>
                             <div class="d-flex  justify-content-center align-items-center">
-                                <img class="m-3 m1 " src="img/facebook.png" alt="Card image cap">
-                                <img class="m-3 m1" src="img/google.png" alt="Card image cap">
-                                <img class="m-3" src="img/icons8-apple-logo-64.png" alt="Card image cap">
+                                <img class="m-3 m1 " src="../assets/img/facebook.png" alt="Card image cap">
+                                <img class="m-3 m1" src="../assets/img/google.png" alt="Card image cap">
+                                <img class="m-3" src="../assets/img/icons8-apple-logo-64.png" alt="Card image cap">
                             
                             </div>
 
@@ -55,7 +55,7 @@
             
             <div class="col d-none d-sm-block" sm>
                 
-                <img src="./img/pexels-skylar-kang-6045248.jpg" class="img-fluid dm-none d-sm-block" alt="image desc" style="height: 44em; width: 100%;">    
+                <img src="../assets/img/pexels-skylar-kang-6045248.jpg" class="img-fluid dm-none d-sm-block" alt="image desc" style="height: 44em; width: 100%;">    
                 
             </div>
            

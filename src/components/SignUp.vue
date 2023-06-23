@@ -1,13 +1,13 @@
 <template>
     <div class="container-fluid d-flex SignUp">
         <div class="col d-none d-sm-block">
-            <img class="float" src="img/moonstarious-project-KbaSNX-6Vdo-unsplash.jpg" alt="" style="height: 44em; width: 80%" >
+            <img class="float" src="../assets/img/moonstarious-project-KbaSNX-6Vdo-unsplash.jpg" alt="" style="height: 44em; width: 80%" >
         </div>
         <div class="col"> 
             <div class="row">
                 <div class="container-fluid pt-3">
                     <div class="d-flex logo">
-                        <img class="img-fluid mx-3" src="img/T.png" alt="">
+                        <img class="img-fluid mx-3" src="../assets/img/T.png" alt="">
                         <h1 class="mt-2">QualityTex</h1>
                     </div>
                 </div>
@@ -50,3 +50,9 @@ export default{
     name: "Singup"
 }
 </script>
+
+
+<style lang="scss">
+
+
+</style>
