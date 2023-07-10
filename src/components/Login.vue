@@ -33,7 +33,8 @@
                                 <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
                             </div>
                             <div class="text-center">
-                                  <button type="submit" class="btn btn-primary mt-3 ">Iniciar sesión</button>
+                              <router-link class="btn btn-primary mt-3" to="/work">Iniciar Sesion</router-link>
+                                  
                                 
                             </div>
                           
