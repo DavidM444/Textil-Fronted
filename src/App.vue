@@ -4,9 +4,6 @@
         <RouterView></RouterView>
 
     </div>
-   
-    
-  
 </template>
 
 
