@@ -43,7 +43,7 @@
         <div class="popup" id="popup-1">
             <h2>Formulario de Calidad de Tela</h2>
             <div class="container">
-                <form class="row" id="form"> 
+                <form class="row" id="form" @submit="submitform"> 
                     <div class="col">
                         <div class="form-group">
                             <label for="Rollo">Rollo</label>
@@ -198,6 +198,30 @@
 
 export default{
     name: "Work",
+    data(){
+        return{
+            "re_fecha": '',
+            "proveedor_pr_id":null,
+            "dimensiones":{
+                "dm_altura":null,
+                "dm_ancho":null
+            }
+        }
+    },
+    methods:{
+        submitform(){
+            const datotoSend={
+                "re_fecha": this,
+                "proveedor_pr_id":null,
+                "dimensiones":{
+                    "dm_altura":null,
+                    "dm_ancho":null
+                }
+            }
+
+        }
+    }
+    
 }
 
 document.addEventListener("DOMContentLoaded", function() {
