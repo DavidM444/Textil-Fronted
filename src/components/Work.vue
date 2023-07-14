@@ -62,7 +62,7 @@
                         
                         <div class="form-group">
                             <label for="proveeddor">Provedor</label>
-                            <select id="tacos" name="tacos">
+                            <select id="tacos" name="tacos" v-model="dataform.proveedor_pr_id">
                                 <option value="TextilNova">TextilNova</option>
                                 <option value="TelasMundo">TelasMundo</option>
                                 <option value="EleganceFabrics">EleganceFabrics</option>
@@ -73,7 +73,7 @@
 
                         <div class="form-group">
                             <label for="fecha">Fecha de Registro:</label>
-                            <input type="date" id="fecha" name="fecha" required>
+                            <input type="date" id="fecha" name="fecha" required v-model="dataform.re_fecha">
                         </div>
                     
                     </div>
@@ -104,8 +104,8 @@
                         <div class="form-group">
                             <label for="">Dimensiones</label>
                         
-                            <input class="col-lg-8" type="number" name="ancho" id="ancho" placeholder="ancho">
-                            <input type="number" name="alto" id="alto" placeholder="alto">
+                            <input class="col-lg-8" type="number" name="ancho" id="ancho" placeholder="ancho" v-model="dataform.dimensiones.dm_ancho">
+                            <input type="number" name="alto" id="alto" placeholder="alto" v-model="dataform.dimensiones.dm_altura">
 
                         </div>
                         <div class="form-group">
@@ -195,6 +195,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 
 export default{
     name: "Work",
@@ -211,11 +212,11 @@ export default{
     methods:{
         submitform(){
             const datotoSend={
-                "re_fecha": this,
-                "proveedor_pr_id":null,
+                "re_fecha": this.dataform.re_fecha,
+                "proveedor_pr_id":this.dataform.proveedor_pr_id,
                 "dimensiones":{
-                    "dm_altura":null,
-                    "dm_ancho":null
+                    "dm_altura":this.dataform.dimensiones.dm_altura,
+                    "dm_ancho":this.dataform.dimensiones.dm_ancho
                 }
             }
 
