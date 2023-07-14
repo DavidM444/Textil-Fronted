@@ -218,9 +218,17 @@ export default{
                     "dm_altura":this.dataform.dimensiones.dm_altura,
                     "dm_ancho":this.dataform.dimensiones.dm_ancho
                 }
+            };
+            axios.post('localhost:8081/registro',datotoSend)
+            .then(response =>{
+                console.log(response.data)
             }
+            ).catch(error =>{
+                console.error(error);
+            });
 
         }
+      
     }
     
 }
