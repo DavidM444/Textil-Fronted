@@ -5,6 +5,7 @@ import Login from './components/Login.vue'
 import Work from './components/Work.vue'
 import Datos from './components/Datos.vue'
 import Grafico from './components/Grafico.vue'
+import Try from './components/try.vue'
 
 const routes = [
   
@@ -35,7 +36,14 @@ const routes = [
     name: 'grafico',
     component: Grafico
 
+  },
+
+  {
+    path:'/try',
+    name:'try',
+    component: Try
   }
+
 
 ]
 
