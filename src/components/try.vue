@@ -41,7 +41,7 @@
         <button @click="fetchData">Obreene</button>
     </div>
 </template>
-<style>
+<style scoped>
 h2{
     text-align: center;
     border: 20px;

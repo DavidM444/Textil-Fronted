@@ -25,7 +25,7 @@
 
             <div class="mx-4 mt-4 open-popup " data-popup-target="popup-1" >
                 <p>Crear nuevo registro de Tela</p>
-                <button class="btn btn-primary open-popup" data-popup-target="popup-1">Abrir formulario</button>
+                <router-link class="btn btn-primary container-fluid" to="/work/form">Abrir Formulario</router-link>
             </div>
 
             <div class="mx-4 mt-4">
@@ -37,112 +37,6 @@
                 <router-link class="btn btn-primary container-fluid" to="/grafico">Estadisticas</router-link>
             </div>
         </section>
-
-        <div class="popup-overlay container-fluid" id="popup-overlay"></div>
-
-        <div class="popup" id="popup-1">
-            <h2>Formulario de Calidad de Tela</h2>
-            <div class="container">
-                <form class="row" id="form" @submit="submitform"> 
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="Rollo">Rollo</label>
-                            <input type="text" id="rollo" name="rollo" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="peso">Peso</label>
-                            <input type="text" id="peso" name="peso" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="Escala grises">Grises</label>
-                            <input type="text" id="tipoTela" name="tipoTela" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="proveeddor">Provedor</label>
-                            <select id="tacos" name="tacos" v-model="dataform.proveedor_pr_id">
-                                <option value="TextilNova">TextilNova</option>
-                                <option value="TelasMundo">TelasMundo</option>
-                                <option value="EleganceFabrics">EleganceFabrics</option>
-                                <option value="FashionFabrics">FashionFabrics</option>
-                                <option value="GlobalTextiles">GlobalTextiles</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="fecha">Fecha de Registro:</label>
-                            <input type="date" id="fecha" name="fecha" required v-model="dataform.re_fecha">
-                        </div>
-                    
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="gramaje">Gramaje</label>
-                            <input type="number" id="gramaje" name="gramaje"  required>
-                        </div>
-                        <div class="form-group">
-                            <label for="nivelGrises">Nivel Grises:</label>
-                            <input type="number" id="nivelGrises" name="nivelGrises" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="nivelPilling">Nivel Pilling:</label>
-                            <input type="number" id="nivelPilling" name="nivelPilling"  required>
-                        </div>
-                        <div class="form-group">
-                            <label for="absorcion">Absorcion:</label>
-                            <input type="number" id="absorcion" name="absorcion"  required>
-                        </div>
-                        <div class="form-group">
-                            <label for="cuatropuntos">Cuatro Puntos:</label>
-                            <input type="number" id="cuatropuntos" name="cuatropuntos" required>
-                        </div>
-                        
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="">Dimensiones</label>
-                        
-                            <input class="col-lg-8" type="number" name="ancho" id="ancho" placeholder="ancho" v-model="dataform.dimensiones.dm_ancho">
-                            <input type="number" name="alto" id="alto" placeholder="alto" v-model="dataform.dimensiones.dm_altura">
-
-                        </div>
-                        <div class="form-group">
-                            <label for="tipoTela">Tip Tela</label>
-                            <select name="telas" id="telas">
-                                <option>algodon</option>
-                                <option>lino</option>
-                                <option value="">Seda</option>
-                                <option value="">Lana</option>
-                                <option value="">Pliester</option>
-                                <option value="">Nylon</option>
-                                <option value="">Denim</option>
-                                <option value="">Terciopelo</option>
-                                <option value="">Saten</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="color">Color</label>
-                            <select name="colores" id="color">
-                                <option>azul</option>
-                                <option>rojo</option>
-                                <option value="">verde</option>
-                                <option value="">negro</option>
-                                <option value="">amarillo</option>
-                                <option value="">blanco</option>
-                            </select>
-                        </div>
-
-                    </div>
-                </form>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary" form="form">Guardar</button>
-                    <button class="btn btn-danger close-popup">Cerrar</button>
-                </div>
-            </div>          
-        </div>
     
         <section class="container-fluid imagenes">
             <div class="rot d-flex justify-content-center">
@@ -195,67 +89,17 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default{
-    name: "Work",
-    data(){
-        return{
-            "re_fecha": '',
-            "proveedor_pr_id":null,
-            "dimensiones":{
-                "dm_altura":null,
-                "dm_ancho":null
-            }
-        }
-    },
-    methods:{
-        submitform(){
-            const datotoSend={
-                "re_fecha": this.dataform.re_fecha,
-                "proveedor_pr_id":this.dataform.proveedor_pr_id,
-                "dimensiones":{
-                    "dm_altura":this.dataform.dimensiones.dm_altura,
-                    "dm_ancho":this.dataform.dimensiones.dm_ancho
-                }
-            };
-            axios.post('localhost:8081/registro',datotoSend)
-            .then(response =>{
-                console.log(response.data)
-            }
-            ).catch(error =>{
-                console.error(error);
-            });
-
-        }
-      
-    }
+    name: "Work",  
     
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  const openPopupButton = document.querySelector(".open-popup");
-  const closePopupButton = document.querySelector(".close-popup");
-  const overlay = document.getElementById("popup-overlay");
 
-  openPopupButton.addEventListener("click", function() {
-    const target = openPopupButton.getAttribute("data-popup-target");
-    const popup = document.getElementById(target);
-    popup.style.display = "block";
-    overlay.style.display = "block";
-  });
-
-  closePopupButton.addEventListener("click", function() {
-    const popup = closePopupButton.closest(".popup");
-    popup.style.display = "none";
-    overlay.style.display = "none";
-  });
-});
    
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 $green-dark:  #006E51;
 $marron: #87CBB9;
@@ -300,73 +144,6 @@ $green-dark:  #006E51;
   footer{
     background-color: #bdd1de;
   }
-.popup-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(195, 206, 112, 0.87);
-    z-index: 9999;
-    overflow-y: auto;
-  }
-.popup {
-    display: none;
-    position:fixed;
-    width: 50%;
-    top: 2%;
-    left: 2%;
-    transform: translate(0%, 0%);
-    background-color: #f0fb59;
-    z-index: 10000;
-    overflow-y: auto;
-    border-radius: 3%;
-  }
-
-  /* estilos del formmulario*/
-  form {
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.form-group {
-
-    margin-bottom: 20px;
-    label{
-    margin-bottom: 5px;
-    }
-    button{
-      padding: 10px 20px;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-}
-
-.form-group input,
-.form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #abcbc3;
-}
-
-.form-group textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-}
-.card-body{
-  background-color: #bdf7f4;
-}
-
-
 
 
 </style>

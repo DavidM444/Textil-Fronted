@@ -16,7 +16,6 @@
                                 <img class="m-3 m1 " src="../assets/img/facebook.png" alt="Card image cap">
                                 <img class="m-3 m1" src="../assets/img/google.png" alt="Card image cap">
                                 <img class="m-3" src="../assets/img/icons8-apple-logo-64.png" alt="Card image cap">
-                            
                             </div>
 
                         </div>
@@ -92,6 +91,7 @@
 }
 .login h2 {
   color: #006E51;
+  
 }
 .login .m1 {
   padding: 8px;
