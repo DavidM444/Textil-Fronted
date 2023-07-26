@@ -6,6 +6,7 @@ import Work from './components/Work.vue'
 import Datos from './components/Datos.vue'
 import Grafico from './components/Grafico.vue'
 import Try from './components/try.vue'
+import Form from './components/Form.vue'
 
 const routes = [
   
@@ -24,6 +25,11 @@ const routes = [
     path:'/work',
     name:'work',
     component:Work
+  },
+  {
+    path: '/work/form',
+    name: "form",
+    component: Form
   },
   {
     path:'/datos',
