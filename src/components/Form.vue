@@ -100,15 +100,20 @@
                     <button type="submit" class="btn btn-primary" form="form">Guardar</button>
                     <button class="btn btn-danger close-popup">Cerrar</button>
                 </div>
-            </div>          
+            </div>
+            <foter></foter>        
         </div>
 </template>
 
 <script>
 import axios from 'axios';
+import foter from './footer.vue'
 
 export default{
     name: "Form",
+    components: {
+        foter,
+    },
     data(){
         return{
             formData:{

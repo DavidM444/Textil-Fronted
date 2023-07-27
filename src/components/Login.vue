@@ -40,7 +40,7 @@
                         </form>
                     </div>
                     <div class="pt-5">
-                      <p class="fs-6 ">No estas registradado?  <router-link to="/singup">Registrarse</router-link></p>
+                      <p class="fs-6 ">No estas registrado?  <router-link to="/singup">Registrarse</router-link></p>
                     </div>
 
                      <div class="f1">
@@ -60,12 +60,13 @@
             </div>
            
         </div>
+        <foot></foot>
     </div>
 
            
 </template>
 
-<style>
+<style >
 * {
   font-family: Georgia, "Times New Roman", Times, serif;
 }
@@ -129,8 +130,12 @@
 
 
 <script>
+import foot from './footer.vue'
 export default{
-  name: "Login"
+  name: "Login",
+  components: {
+    foot,
+  }
 }
 console.log("entranod a login")
 </script>
