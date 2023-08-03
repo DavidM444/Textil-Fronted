@@ -1,6 +1,6 @@
 <template>
     <div class="ft">
-        <footer class="bg-warning py-4">
+        <footer class="bg-f py-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-left">
@@ -27,7 +27,10 @@ export default{
 }
 </script>
 <style scoped>
-.bg-warning{
-    background-color: #6e6e2e;
+.bg-f{
+    background-color: #00473e;
+}
+.bg-f p{
+    color: #f2f7f5;
 }
 </style>

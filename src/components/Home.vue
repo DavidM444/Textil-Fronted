@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid">
-        <div class="row">
+        <div class="row head">
                 <div class="col-sm-8 text-md-left d-flex logo ">
                     <img class="" src="../assets/img/T.png" alt="">
                     <h1 class="align-self-center">QualityTex</h1>
@@ -14,8 +14,8 @@
             
 
         </div>
-        <div class="row bg-warning">
-            <div>
+        <div class="row info bg-warning">
+            <div class="est">
                 <h2>Estandares de calidad textil</h2>
                 <p>Los estándares de calidad en la industria textil son criterios fundamentales para garantizar la
                     excelencia en
@@ -37,7 +37,7 @@
                     la
                     calidad del producto final y cuenten con los requisitos establecidos.</p>
             </div>
-            <div>
+            <div class="est">
 
                 <h2>Innovaciones En el ambito textil</h2>
 
@@ -106,19 +106,10 @@
                 autorreparación y protección contra bacterias y otros agentes dañinos.</p>
                     </li>
                 </ul>
-                
-
-                
-
-              
-
-               
-
-
 
                 </p>
             </div>
-            <div>
+            <div class="est2">
                 <h2>Calidad de confección</h2>
                 <p>
                     La calidad de confección en la industria textil es un aspecto fundamental para garantizar la
@@ -191,6 +182,27 @@
 
 </template>
 <style scoped lang="scss">
+
+$tex-w: #f2f7f5;
+$bgcolor: #00473e;
+$nar: #faae2b;
+
+
+
+.est{
+    background-color: #f2f7f5;
+    padding: 1% 5%;
+}
+.est2{
+    background-color: #00473e;
+    padding: 2%;
+}
+.est2 p{
+    color: #f2f7f5;
+}
+.head{
+    background-color: #00473e;
+}
 .link{
     margin-right: 1rem;
 }

@@ -7,6 +7,7 @@ import Datos from './components/Datos.vue'
 import Grafico from './components/Grafico.vue'
 import Try from './components/try.vue'
 import Form from './components/Form.vue'
+import Home from './components/Home.vue'
 
 const routes = [
   
@@ -14,6 +15,11 @@ const routes = [
     path: '/',
     name: 'login',
     component: Login
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: Home
   },
 
   {

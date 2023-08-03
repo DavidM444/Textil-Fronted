@@ -26,7 +26,7 @@
 <style>
     
     .contenedor{
-        background-color: chocolate;
+        background-color: transparent;
     }
     :root
     {

@@ -60,6 +60,9 @@ export default{
 
 
 <style lang="scss">
+.SignUp{
+    background-color: rgb(205, 244, 227);
+}
 
 
 </style>
