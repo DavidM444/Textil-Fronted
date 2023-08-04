@@ -158,20 +158,22 @@ export default{
     left: 2%;
     align-content: center;
     
-    transform: translate(0%, 0%);
-    background-color: #f0fb59;
+
+    background-color:#f2f7f5;
     overflow-y: auto;
-    border-radius: 3%;
+    border-radius: 10px;
     h2{
 
-        color: rgb(134, 169, 106);
+        color: #00473e;
         text-align: center;
+        font-weight: 600;
+        padding: 2rem;
     }
   }
 
   /* estilos del formmulario*/
   form {
-    max-width: 500px;
+    max-width: 50rem;
 }
 
 .form-group {
@@ -181,8 +183,9 @@ export default{
     label{
     margin-bottom: 5px;
     }
-    button{
-      padding: 10px 20px;
+    .btn{
+      padding: 0.5rem  1rem;
+      margin: 0 1rem;
       color: #fff;
       border: none;
       border-radius: 4px;
@@ -195,9 +198,9 @@ export default{
 .form-group select {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
+    border:2px solid #00473e;
     border-radius: 4px;
-    background-color: #abcbc3;
+    background-color: #cbe4e0;
 }
 
 .form-group textarea {
@@ -206,8 +209,6 @@ export default{
     border-radius: 4px;
     resize: vertical;
 }
-.card-body{
-  background-color: #bdf7f4;
-}
+
 
 </style>

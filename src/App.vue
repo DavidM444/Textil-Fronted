@@ -1,50 +1,26 @@
 <template>
-
     <div id="app" class="contenedor">
-        <RouterView></RouterView>
-
+      <RouterView></RouterView>
     </div>
-</template>
-
-
-<script>
+  </template>
   
-    export default{
-        name:"App",
-        
-
-    }
-    
-    
-</script>
-
-
-
-
-
-
-<style>
-    
-    .contenedor{
-        background-color: transparent;
-    }
-    :root
-    {
-        --clr: #222327;
-    }
-
-    .cabecera {
-        background-color:transparent;;
-
-
-        
-    }
-
-   
-    
-
+  <script>
+  export default {
+    name: "App",
+  };
+  </script>
+  
+  <style>
+  .contenedor {
+    background-color: transparent;
+  }
+  :root {
+    --clr: #222327;
+  }
+  .cabecera {
+    background-color: transparent;
+  } 
 </style>
-
-
-
+  
+  
 

@@ -5,7 +5,7 @@
         <div class="container-fluid pt-3">
           <div class="d-flex logo">
             <img class="img-fluid mx-3" src="../assets/img/T.png" alt="">
-            <h1 class="mt-2">QualityTex</h1>
+            <h1 class="mt-2 text-center">Quality Tex</h1>
           </div>
 
           <div class="pt-3">
@@ -31,9 +31,7 @@
                 <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
               </div>
               <div class="text-center">
-                <router-link class="btn btn-primary mt-3" to="/work">Iniciar Sesion</router-link>
-
-
+                <router-link class="btn btn-primary mt-3 btn-login" to="/work">Iniciar Sesion</router-link>
               </div>
 
             </form>
@@ -42,20 +40,15 @@
             <p class="fs-6 ">No estas registrado? <router-link to="/singup">Registrarse</router-link></p>
           </div>
 
-          <div class="f1">
-            <div class="card text-center pt-4">
-              <p>QualityTex - Software de calidad Textil</p>
-              <p>2023 - © Copyrigth</p>
-            </div>
-          </div>
+         
 
         </div>
       </div>
 
-      <div class="col d-none d-sm-block" sm>
+      <div class="col d-none d-md-block">
 
         <img src="../assets/img/pexels-skylar-kang-6045248.jpg" class="img-fluid dm-none d-sm-block" alt="image desc"
-          style="height: 44em; width: 100%;">
+          style="height: 37em; width: 100%;">
 
       </div>
 
@@ -66,8 +59,8 @@
 </template>
 
 <style>
-* {
-  font-family: Georgia, "Times New Roman", Times, serif;
+body{
+  font-family: 'Poppins', sans-serif;
 }
 
 
@@ -83,7 +76,9 @@
 }
 
 .logo h1 {
-  font-family: "Cormorant SC", serif;
+
+  font-size: 3rem;
+  font-weight: 600;
   color: #00473e
 }
 
@@ -103,9 +98,10 @@
 
 .login img {
   width: 12%;
-  background-color: #faae2b;
+  background-color:transparent;
   border-radius: 50%;
 }
+
 
 .logo {
   animation: myAnim 5s ease 0s 1 normal none;
@@ -122,16 +118,9 @@
     transform: translateX(0);
   }
 }
-.f1{
-  background-color: transparent;
-}
-.f1 p{
-  color: #00473e;
-}
 
-.f1 .card {
-  background-color: transparent;
-  border: none;
+.btn-login{
+  background-color: #00473e;
 }
 </style>
 

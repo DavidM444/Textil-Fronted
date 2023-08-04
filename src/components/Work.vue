@@ -11,8 +11,8 @@
             <div class="col-sm-4 align-self-center text-center d-none d-sm-block">
             
                 <div class="user">
-                    <p>Nombre de Usuario</p>
-                    <p>Juan Carlos test</p>
+                    <p>Usuario</p>
+                    <p>Juan Carlos Rodriguez</p>
                 </div>
             </div>
         </div>
@@ -96,9 +96,8 @@
                 </p>
 
             </div>
-            <div class="d-flex align-self-center">
-                <img src="../assets/img/pexels-jeshootscom-530024.jpg" class=""
-                    alt="...">
+            <div class="d-flex align-self-center imgf">
+                <img src="../assets/img/pexels-jeshootscom-530024.jpg" class="img-fluid" alt="...">
             </div>
 
 
@@ -145,6 +144,10 @@ $bg: #00473e;
 
 
 .btn{
+    background-color: #00473e;
+    border-color: #00473e;
+}
+.btn:hover{
     background-color: #F2A51A;
     border-color: #F2A51A;
 }
@@ -188,7 +191,8 @@ p{    color: #4A4A4A;
     
  
     img{
-        max-width: 50%;
+        width: 70%;
+        height: 60%;
         margin: auto;
     }
     h3{
@@ -201,6 +205,10 @@ p{    color: #4A4A4A;
     p{
         color: $green-dark;
         padding: 0 5rem;
+    }
+    .imgf{
+        margin: 3rem 0;
+
     }
     
 }</style>
