@@ -51,7 +51,7 @@
                             <input type="number" id="nivelPilling" name="nivelPilling"  required>
                         </div>
                         <div class="form-group">
-                            <label for="absorcion">Absorcion:</label>
+                            <label for="absorcion">Absorción:</label>
                             <input type="number" id="absorcion" name="absorcion"  required>
                         </div>
                         <div class="form-group">
@@ -98,7 +98,7 @@
                 </form>
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary" form="form">Guardar</button>
-                    <button class="btn btn-danger close-popup">Cerrar</button>
+                    <button @click.prevent="clear" class="btn btn-danger close-popup">Cerrar</button>
                 </div>
             </div>
             <foter></foter>        
@@ -145,9 +145,13 @@ export default{
                 console.error(error);
             });
 
+        },
+        clear(){
+
         }
       
-    }
+    },
+
     
 }
 </script>

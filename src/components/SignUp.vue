@@ -20,16 +20,18 @@
                         <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" required placeholder="">
                         
                         <label for="lname" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" name="lname" id="lname" aria-describedby="helpId" required placeholder="">
-                        
-                        <label for="" class="form-label">Numero Telefonico</label>
-                        <input type="text" class="form-control" pattern="[1-9]\d*" required name="" id="" aria-describedby="helpId" placeholder="">
-                        
+                        <input type="text" class="form-control" name="lname" id="name" aria-describedby="helpId" required placeholder="">
                         
                         <label for="Email" class="form-label">Email</label>
                         <input type="email" class="form-control" required name="Email" id="Email" aria-describedby="helpId" placeholder="">
+                        
+                        <label for="contraseña" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" required name="contraseña" id="contraseña">
+                        
+                        
+                        
   
-                        <button type="submit" class="btnr btn btn-primary mt-3">Submit</button>
+                        <button type="submit" class="btnr btn btn-primary mt-3">Registrar</button>
                         
                     </form>
 

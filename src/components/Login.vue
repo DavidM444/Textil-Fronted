@@ -10,7 +10,7 @@
 
           <div class="pt-3">
             <div class="card login">
-              <h2 class="text-center">Inicia Sesion</h2>
+              <h2 class="text-center">Iniciar Sesión</h2>
               <div class="d-flex  justify-content-center align-items-center">
                 <img class="m-3 m1 " src="../assets/img/facebook.png" alt="Card image cap">
                 <img class="m-3 m1" src="../assets/img/google.png" alt="Card image cap">
@@ -31,13 +31,13 @@
                 <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
               </div>
               <div class="text-center">
-                <router-link class="btn btn-primary mt-3 btn-login" to="/work">Iniciar Sesion</router-link>
+                <router-link class="btn btn-primary mt-3 btn-login" to="/work">Iniciar Sesión</router-link>
               </div>
 
             </form>
           </div>
           <div class="pt-5">
-            <p class="fs-6 ">No estas registrado? <router-link to="/singup">Registrarse</router-link></p>
+            <p class="fs-6 ">¿ No estas registrado ? <router-link to="/singup">Registrarse</router-link></p>
           </div>
 
          
@@ -121,6 +121,7 @@ body{
 
 .btn-login{
   background-color: #00473e;
+  border-color: #00473e;
 }
 </style>
 

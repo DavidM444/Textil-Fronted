@@ -21,7 +21,7 @@
             <div class="d-flex text-center flex-column flex-sm-row justify-content-center">
                 
                 <div class="p-1">
-                    <p>Crear nuevo registro de Tela</p>
+                    <p>Crear nuevo registro de tela</p>
                     <router-link class="btn btn-primary " to="/work/form">Abrir Formulario</router-link>
                 </div>
 
@@ -30,8 +30,8 @@
                     <router-link class="btn btn-primary " to="/datos">Registrar</router-link>
                 </div>
                 <div class="p-1">
-                    <p>Graficos del Sistema</p>
-                    <router-link class="btn btn-primary" to="/grafico">Estadisticas</router-link>
+                    <p>Gráficos del Sistema</p>
+                    <router-link class="btn btn-primary" to="/grafico">Estadísticas</router-link>
                 </div>
             </div>
            
@@ -55,8 +55,7 @@
                 <div class="align-self-center  card w-auto">
                     <div class="card-body d-flex">
                         <p>Nuestras telas cumplen con los estándares más altos de calidad, para garantizar
-                            la
-                            satisfacción de nuestros clientes.</p>
+                            la satisfacción de nuestros clientes.</p>
 
                     </div>
                 </div>
