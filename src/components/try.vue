@@ -52,6 +52,7 @@ h2{
 </style>
 
 <script>
+console.log("usando js en try")
 import axios from 'axios';
 export default{
     name: "try",
@@ -63,15 +64,56 @@ export default{
     methods:{
         
         fetchData(){
-            let url = 'http://localhost:8081/registro';
-            axios.get(url).then(
-                response=> {const data = response.data;
-             console.log(response)}).catch(error => {
-          console.error(error);
-        });
+            /*
+            let url = 'https://pokeapi.co/api/v2/pokemon/ditto';
+            axios.get(url)
+            .then(
+                response=> {
+                     if (response.status != "200") {
+                        console.error("no es 299");
+                    }
+                    else {
+                        return response.json();
+                    }
+                    const data = response.data;
+                    const data2 = data.data;
+                    console.log( response);
+                console.log(data2)
+            })
+            .then((data) => {
+        if (data) {
+            console.log(data.name);
+
+           
+        }
+    })*/
+
+        {
+
+    const nb = "ditto";
+    const url = `https://pokeapi.co/api/v2/pokemon/${nb}`;
+    fetch(url).then((res) => {
+        if (res.status != "200") {
+            pokeImage("./assets_pode/pk.gif")
+        }
+        else {
+            return res.json();
+        }
+    })
+    .then((data) => {
+        if (data) {
+            let pokeImg = data.sprites.front_default;
+            let PokeInfo = data.name
+            let PokeTipe = data.types
+            let PokeStatics = data.stats
+            let PokeMove = data.moves
+console.log(PokeInfo)  
+        }
+    });
+}
+        
+            },
         },
-      
-    },
    
     
 }
