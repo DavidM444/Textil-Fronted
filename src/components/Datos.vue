@@ -118,5 +118,5 @@
 </style>
 
 <script>
-
+console.log("data enabled")
 </script>
