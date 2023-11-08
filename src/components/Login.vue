@@ -21,17 +21,17 @@
           </div>
 
           <div class="mt-3">
-            <form class="w-auto mx-auto" action="Home.html">
+            <form class="w-auto mx-auto" action="Home.html" @submit.prevent="loginUserProcess">
               <div class="form-group ">
                 <label for="email">Correo electrónico:</label>
-                <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo electrónico" required>
+                <input v-model="username" type="email" class="form-control" id="email" placeholder="Ingresa tu correo electrónico" required>
               </div>
               <div class="form-group">
-                <label for="password">Contraseña:</label>
-                <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
+                <label  for="password">Contraseña:</label>
+                <input v-model="password" type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
               </div>
               <div class="text-center">
-                <router-link class="btn btn-primary mt-3 btn-login" to="/work">Iniciar Sesión</router-link>
+                <button type="submit" class="btn btn-primary mt-3 btn-login">Iniciar Sesión</button>
               </div>
 
             </form>
@@ -128,8 +128,47 @@ body{
 
 <script>
 import foot from './footer.vue'
+
+import axios from 'axios';
+
+
 export default {
   name: "Login",
+  data: function(){
+    return {
+      user: {
+        username: "",
+        password: ""
+      }
+    }
+ 
+  },
+  methods: {
+    loginUserProcess: function () {
+      const user = {
+        username: this.user.username,
+        clave: this.user.password
+      }
+      axios.post(
+        "mi url",
+        user,
+        { headers: {} }
+      )
+        .then((result) => {
+          let dataLogIn = {
+            username: this.user.username,
+            token_access: result.data.access,
+            token_refresh: result.data.refresh,
+          }
+          this.$emit('completedLogIn', dataLogIn)
+        })
+        .catch((error) => {
+          if (error.response.status == "401")
+            alert("ERROR 401: Credenciales Incorrectas.");
+
+        });
+    }
+  },
   components: {
     foot,
   }
