@@ -12,7 +12,7 @@
             
                 <div class="user">
                     <p>Usuario</p>
-                    <p>Juan Carlos Rodriguez</p>
+                    <p> {{ username }}</p>
                 </div>
             </div>
         </div>
@@ -110,6 +110,12 @@
 <script>
 export default {
     name: "Work",
+    data: function(){
+        return{
+            username: localStorage.getItem('username')||"none"
+        }
+        
+    }
 
 }
 
