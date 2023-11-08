@@ -24,11 +24,11 @@
             <form class="w-auto mx-auto" action="Home.html" @submit.prevent="loginUserProcess">
               <div class="form-group ">
                 <label for="email">Correo electrónico:</label>
-                <input v-model="username" type="email" class="form-control" id="email" placeholder="Ingresa tu correo electrónico" required>
+                <input v-model="user.username" type="email" class="form-control" id="email" placeholder="Ingresa tu correo electrónico" required>
               </div>
               <div class="form-group">
                 <label  for="password">Contraseña:</label>
-                <input v-model="password" type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
+                <input v-model="user.password" type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
               </div>
               <div class="text-center">
                 <button type="submit" class="btn btn-primary mt-3 btn-login">Iniciar Sesión</button>
@@ -137,8 +137,8 @@ export default {
   data: function(){
     return {
       user: {
-        username: "",
-        password: ""
+        username: '',
+        password: ''
       }
     }
  
@@ -146,26 +146,30 @@ export default {
   methods: {
     loginUserProcess: function () {
       const user = {
-        username: this.user.username,
+        email: this.user.username,
         clave: this.user.password
       }
       axios.post(
-        "mi url",
+        "http://localhost:8081/login",
         user,
         { headers: {} }
       )
         .then((result) => {
+          console.log(result);
           let dataLogIn = {
             username: this.user.username,
-            token_access: result.data.access,
-            token_refresh: result.data.refresh,
-          }
+            token_access: result.data.jwtToken,
+          };
+
+          
+          console.log("data: ", dataLogIn)
           this.$emit('completedLogIn', dataLogIn)
+          console.log("saliendo del emit del login")
         })
         .catch((error) => {
-          if (error.response.status == "401")
+          console.log("error en la peticion, error ", error);
+        
             alert("ERROR 401: Credenciales Incorrectas.");
-
         });
     }
   },
