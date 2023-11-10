@@ -14,6 +14,9 @@
                     <p>Usuario</p>
                     <p> {{ username }}</p>
                 </div>
+                <div>
+                    <button v-on:click="logOut">Salir</button>
+                </div>
             </div>
         </div>
 
@@ -108,13 +111,58 @@
 </template>
 
 <script>
+
+import { jwtDecode } from "jwt-decode";
 export default {
     name: "Work",
     data: function(){
         return{
-            username: localStorage.getItem('username')||"none"
+            username: localStorage.getItem('name')||"none",
+            expToken: null,
+            token: `${localStorage.getItem('token_access')}`
         }
         
+    },
+    methods: {
+        logOut: function(){
+            alert("La sesion ha cerrado");
+            this.$emit("logOut");
+            console.log("se emitio logout")
+        },
+        decodeToken: function(){
+          
+            
+           
+            try {
+               
+                let exp = jwtDecode(this.token);
+                this.expToken = exp.exp;
+               //console.log('token_ , ',this.token, ' exp: ', exp, ' exp2. ', exp.exp )
+                this.expValue();
+                
+            } catch (error) {
+                alert("No hay credenciales. Ingrese nuevamente");
+                console.log(this.token," -- ", this.expToken)
+                this.$emit('logOut');
+            }
+            
+        },
+        expValue: function(){
+            const expDate = this.expToken * 1000;
+            //console.log('exp value ',expDate )
+            const now = Date.now();
+            if(now > expDate){
+                alert("Token Expirado");
+                this.$emit('logOut');
+            }
+
+        }
+
+
+    },
+    mounted(){
+        console.log('mounted decode')
+        this.decodeToken();
     }
 
 }
@@ -142,8 +190,6 @@ $bg: #00473e;
         font-weight: 700;
         font-size: 3rem;
     }
-
-   
 
 }
 
