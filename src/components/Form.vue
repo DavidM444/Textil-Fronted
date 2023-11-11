@@ -3,103 +3,97 @@
             
             <div class="row d-flex justify-content-center ">
                 <h2 class="row d-flex justify-content-center">Formulario de Calidad de Tela</h2>
-                <form class="row"> 
+                <form class="row" @submit.prevent="submitform"> 
                     <div class="col">
                         <div class="form-group">
                             <label for="Rollo">Rollo</label>
-                            <input type="text" id="rollo" name="rollo" required>
+                            <input v-model="formData.rollo" type="text" id="rollo" name="rollo" required>
                         </div>
 
                         <div class="form-group">
                             <label for="peso">Peso</label>
-                            <input type="text" id="peso" name="peso" required>
+                            <input v-model="formData.peso" type="text" id="peso" name="peso" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="Escala grises">Grises</label>
-                            <input type="text" id="tipoTela" name="tipoTela" required>
+                            <label for="valoracion">Valoracion Grises</label>
+                            <input v-model="formData.valoracion" type="text" id="valoracion" name="valoracion" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="proveeddor">Provedor</label>
-                            <select id="tacos" name="tacos" v-model="formData.proveedor_pr_id">
-                                <option value="TextilNova">TextilNova</option>
-                                <option value="TelasMundo">TelasMundo</option>
-                                <option value="EleganceFabrics">EleganceFabrics</option>
-                                <option value="FashionFabrics">FashionFabrics</option>
-                                <option value="GlobalTextiles">GlobalTextiles</option>
+                            <select id="tacos" name="tacos" v-model="formData.proveedor">
+                                <option value=1>TextilNova</option>
+                                <option value=2>TelasMundo</option>
+                                <option value=3>EleganceFabrics</option>
+                                <option value=4>FashionFabrics</option>
+                                <option value=6>GlobalTextiles</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="fecha">Fecha de Registro:</label>
-                            <input type="date" id="fecha" name="fecha" required v-model="formData.re_fecha">
+                            <input type="date" id="fecha" name="fecha" required v-model="formData.fecha">
                         </div>
                     
                     </div>
                     <div class="col">
+                       
+                      
                         <div class="form-group">
-                            <label for="gramaje">Gramaje</label>
-                            <input type="number" id="gramaje" name="gramaje"  required>
-                        </div>
-                        <div class="form-group">
-                            <label for="nivelGrises">Nivel Grises:</label>
-                            <input type="number" id="nivelGrises" name="nivelGrises" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="nivelPilling">Nivel Pilling:</label>
-                            <input type="number" id="nivelPilling" name="nivelPilling"  required>
-                        </div>
-                        <div class="form-group">
-                            <label for="absorcion">Absorción:</label>
-                            <input type="number" id="absorcion" name="absorcion"  required>
+                            <label for="absorcion">Absorción Pilling:</label>
+                            <input v-model="formData.cantidad"  type="number" id="cantidad" name="cantidad" placeholder="cantidad" required>
+                            <input v-model="formData.tiempo" type="number" id="tiempo" name="tiempo" placeholder="tiempo" required>
+                            <input v-model="formData.rango" type="number" id="rango" name="rango" placeholder="rango" required>
                         </div>
                         <div class="form-group">
                             <label for="cuatropuntos">Cuatro Puntos:</label>
-                            <input type="number" id="cuatropuntos" name="cuatropuntos" required>
+                            <input v-model="formData.puntuacion" type="number" id="cuatropuntos" name="cuatropuntos" required>
                         </div>
                         
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label for="">Dimensiones</label>
-                            <input type="number" name="ancho" id="ancho" placeholder="ancho" v-model="formData.dimensiones.dm_ancho">
-                            <input type="number" name="alto" id="alto" placeholder="alto" v-model="formData.dimensiones.dm_altura">
+                            <input type="number" name="ancho" id="ancho" placeholder="ancho" v-model="formData.ancho">
+                            <input type="number" name="alto" id="alto" placeholder="alto" v-model="formData.altura">
 
                         </div>
                         <div class="form-group">
                             <label for="tipoTela">Tipo de Tela</label>
-                            <select name="telas" id="telas">
+                            <select v-model="formData.tipoTela" name="telas" id="telas">
                                 <option>algodon</option>
                                 <option>lino</option>
-                                <option value="">Seda</option>
-                                <option value="">Lana</option>
-                                <option value="">Pliester</option>
-                                <option value="">Nylon</option>
-                                <option value="">Denim</option>
-                                <option value="">Terciopelo</option>
-                                <option value="">Saten</option>
+                                <option value="Seda">Seda</option>
+                                <option value="Lana">Lana</option>
+                                <option value="Poliester">Pliester</option>
+                                <option value="Nylon">Nylon</option>
+                                <option value="Denim">Denim</option>
+                                <option value="Terciopelo">Terciopelo</option>
+                                <option value="Saten">Saten</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="color">Color</label>
-                            <select name="colores" id="color">
-                                <option>azul</option>
-                                <option>rojo</option>
-                                <option value="">verde</option>
-                                <option value="">negro</option>
-                                <option value="">amarillo</option>
-                                <option value="">blanco</option>
+                            <select v-model="formData.color" name="colores" id="color">
+                                <option value="Azul">azul</option>
+                                <option value="Rojo">rojo</option>
+                                <option value="Verde">verde</option>
+                                <option value="Negro">negro</option>
+                                <option value="Amarillo">amarillo</option>
+                                <option value="Blanco">blanco</option>
                             </select>
                         </div>
 
                     </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button @click.prevent="clear" class="btn btn-danger close-popup">Cerrar</button>
+                    </div>
+
                 </form>
-                <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary" form="form">Guardar</button>
-                    <button @click.prevent="clear" class="btn btn-danger close-popup">Cerrar</button>
-                </div>
+                
             </div>
             <foter></foter>        
         </div>
@@ -117,33 +111,78 @@ export default{
     data(){
         return{
             formData:{
-                "re_fecha": '',
-                "proveedor_pr_id":'',
+                "fecha": '',
+                "proveedor": null,
                 "dimensiones":{
-                    "dm_altura":null,
-                    "dm_ancho":null
+                    "altura":null,
+                    "ancho":null
+                },
+                "escalagrises": {
+                    "valoracion": null
+                },
+                "sispuntos": {
+                    "puntuacion": null
+                },
+                "abpilling": {
+                    "cantidad": null,
+                    "tiempo": null,
+                    "rango": null
+                },
+                "especificaciones": {
+                    "rollo": null,
+                    "peso": null,
+                    "tipoTela": '',
+                    "color": ''
                 }
            
             }
         }
     },
     methods:{
+        
         submitform(){
+            console.log("antes del data");
             const datotoSend={
-                "re_fecha": this.formData.re_fecha,
-                "proveedor_pr_id":this.formData.proveedor_pr_id,
+                "fecha": this.formData.fecha,
+                "proveedor":this.formData.proveedor,
                 "dimensiones":{
-                    "dm_altura":this.formData.dimensiones.dm_altura,
-                    "dm_ancho":this.formData.dimensiones.dm_ancho
+                    "altura":this.formData.altura,
+                    "ancho":this.formData.ancho
+                },
+                "escalagrises": {
+                    "valoracion": this.formData.valoracion
+                },
+                "sispuntos": {
+                    "puntuacion": this.formData.puntuacion
+                },
+                "abpilling": {
+                    "cantidad": this.formData.cantidad,
+                    "tiempo": this.formData.tiempo,
+                    "rango": this.formData.rango
+                },
+                "especificaciones": {
+                    "rollo": this.formData.rollo,
+                    "peso": this.formData.peso,
+                    "tipoTela": this.formData.tipoTela,
+                    "color": this.formData.color
                 }
             };
-            axios.post('http://localhost:8081/registro',datotoSend)
-            .then(response =>{
-                console.log(response.data)
+            let token = localStorage.getItem("token_access");
+            //let token = '';
+            console.log("realizando registro" + datotoSend)
+            
+            axios.post('http://localhost:8081/registro',datotoSend,
+            {headers:{
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'}})
+            .then((response) =>{
+                console.log(response.data);
+                console.log('token '+token)
             }
-            ).catch(error =>{
-                console.error(error);
+            ).catch((error) =>{
+                console.error(error+ " data "+datotoSend);
             });
+            console.log("ffinal")
 
         },
         clear(){
