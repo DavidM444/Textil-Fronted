@@ -102,6 +102,7 @@
 <script>
 import axios from 'axios';
 import foter from './footer.vue'
+import Swal from 'sweetalert2'
 
 export default{
     name: "Form",
@@ -178,6 +179,11 @@ export default{
             .then((response) =>{
                 console.log(response.data);
                 console.log('token '+token)
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Registro exitoso!',
+                    text: 'El registro se ha completado satisfactoriamente.',
+                });
             }
             ).catch((error) =>{
                 console.error(error+ " data "+datotoSend);

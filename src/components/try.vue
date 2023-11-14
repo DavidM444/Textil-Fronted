@@ -3,7 +3,7 @@
         <h2>try</h2>
     </div>
     <div>
-        <form class="row" id="form" action="" > 
+        <form class="row" id="form" action="">
             <div class="col">
                 <div class="form-group">
                     <label for="proveeddor">Provedor</label>
@@ -18,31 +18,37 @@
 
                 <div class="form-group">
                     <label for="fecha">Fecha de Registro:</label>
-                    <input type="date" id="fecha" name="fecha" required >
+                    <input type="date" id="fecha" name="fecha" required>
                 </div>
-            
+
             </div>
-                
+
             <div class="col">
                 <div class="form-group">
                     <label for="dimensiones">Dimensiones</label>
-                
-                    <input class="col-lg-8" type="number" name="ancho" id="ancho" placeholder="ancho" >
+
+                    <input class="col-lg-8" type="number" name="ancho" id="ancho" placeholder="ancho">
                     <input type="number" name="alto" id="alto" placeholder="alto">
 
                 </div>
 
             </div>
             <div class="form-group">
-                    <button type="submit" class="btn btn-primary" form="form">Guardar</button>
-                    <button class="btn btn-danger close-popup">Cerrar</button>
-                </div>
+                <button type="submit" class="btn btn-primary" form="form">Guardar</button>
+                <button class="btn btn-danger close-popup">Cerrar</button>
+            </div>
         </form>
         <button @click="fetchData">Obreene</button>
     </div>
+    <div>
+        <h2>results</h2>
+        <div>
+            <h3>{{ registro.id }}</h3>
+        </div>
+    </div>
 </template>
 <style scoped>
-h2{
+h2 {
     text-align: center;
     border: 20px;
     border-radius: 3%;
@@ -54,16 +60,15 @@ h2{
 <script>
 console.log("usando js en try")
 import axios from 'axios';
-export default{
+export default {
     name: "try",
-    data(){
-        return{
+    data() {
+        return {
             registro: [],
         }
     },
-    methods:{
-        
-        fetchData(){
+    methods: {
+        fetchData() {
             /*
             let url = 'https://pokeapi.co/api/v2/pokemon/ditto';
             axios.get(url)
@@ -87,34 +92,26 @@ export default{
            
         }
     })*/
+            let url = "https://pokeapi.co/api/v2/pokemon/ditto";
+            fetch(url)
+                .then((res) => (res.json()))
+                .then((data) => console.log((this.registro = data))
+                );
+            console.log("fin");
+            setTimeout(() => {
+                console.log("registro: ", this.registro)
+            }, 1000);
+            const objec = { name: "carlos", id: 123 };
+            registro.push(objec);
 
-        {
 
-    const nb = "ditto";
-    const url = `https://pokeapi.co/api/v2/pokemon/${nb}`;
-    fetch(url).then((res) => {
-        if (res.status != "200") {
-            pokeImage("./assets_pode/pk.gif")
+
         }
-        else {
-            return res.json();
-        }
-    })
-    .then((data) => {
-        if (data) {
-            let pokeImg = data.sprites.front_default;
-            let PokeInfo = data.name
-            let PokeTipe = data.types
-            let PokeStatics = data.stats
-            let PokeMove = data.moves
-console.log(PokeInfo)  
-        }
-    });
+    },
+
+
+
 }
-        
-            },
-        },
-   
-    
-}
+
+
 </script>

@@ -130,9 +130,6 @@ export default {
             console.log("se emitio logout")
         },
         decodeToken: function(){
-          
-            
-           
             try {
                
                 let exp = jwtDecode(this.token);

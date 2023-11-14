@@ -46,6 +46,7 @@
 </template>
 <script>
 import foot from './footer.vue'
+import axios from 'axios'
 export default {
     name: "Singup",
     components: {
@@ -65,13 +66,13 @@ export default {
     methods: {
         processSignUp: function() {
             axios.post(
-                "https://mision-tic-bank-be.herokuapp.com/user/",
+                "http://localhost:8081/signup",
                 this.user,
                 { headers: {} }
             )
                 .then((result) => {
                     let dataSignUp = {
-                        username: this.user.username,
+                        nombre: this.user.username,
                         apellido: this.user.apellido,
                         email: this.user.email,
                         clave: result.user.jwtToken,

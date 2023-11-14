@@ -158,7 +158,8 @@ export default {
           console.log(result);
           let dataLogIn = {
             username: this.user.username,
-            token_access: result.data.jwtToken,
+            token_access: result.data.token,
+            name: result.data.nombre
           };
 
           
