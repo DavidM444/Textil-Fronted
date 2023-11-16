@@ -177,21 +177,29 @@ export default{
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'}})
             .then((response) =>{
-                console.log(response.data);
+                console.log("data response ok: ",response.data);
                 console.log('token '+token)
                 Swal.fire({
                     icon: 'success',
                     title: '¡Registro exitoso!',
                     text: 'El registro se ha completado satisfactoriamente.',
+                    confirmButtonText: 'OK'
                 });
             }
             ).catch((error) =>{
-                console.error(error+ " data "+datotoSend);
+                console.error(error+ " data a enviar "+datotoSend, " data del error ", error.data);
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Registro fallido!',
+                    text: 'El registro no ha sido completado.',
+                    confirmButtonText: 'Cool'
+                });
             });
             console.log("ffinal")
 
         },
         clear(){
+            this.$router.push({name: 'work'})
 
         }
       
