@@ -1,122 +1,181 @@
 <template>
-    <div class="dts-container">
-            <h1>Tabla de la Base de Datos</h1>
-        
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="Buscar en columnas...">
-        </div>
-        
-        <table id="data-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Ancho</th>
-                    <th>Alto</th>
-                    <th>Color</th>
-                    <th>Gramaje</th>
-                    <th>Pilling</th>
-                    <th>Grises</th>
-                    <th>4 puntos</th>
-                    <th>proveeddor</th>
-                    <th>Fecha</th>
-                    <th>peso</th>
-                    <th>rollo</th>
-                    <th>tipo tela</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>32cm</td>
-                    <td>33 cm</td>
-                    <td>rojo</td>
-                    <td>4.6</td>
-                    <td>30</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>NovaText</td>
-                    <td>12/03/2019</td>
-                    <td>2.4 kg</td>
-                    <td>324-333-432</td>
-                    <td>Seda</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>31 cm</td>
-                    <td>25 cm</td>
-                    <td>azul</td>
-                    <td>3.4</td>
-                    <td>20</td>
-                    <td>5</td>
-                    <td>2</td>
-                    <td>TelasMundo</td>
-                    <td>22/03/2023</td>
-                    <td>3.3 kg</td>
-                    <td>546-653-677</td>
-                    <td>Nailon </td>
-                </tr>
-                <!-- Agrega más filas de datos aquí -->
-            </tbody>
+    <div>
+      <div class="table-responsive">
+        <section>
+          <h2 class="text-center text-bg-success fs-2 font-monospace">Tabla de registros</h2>
+        </section>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <!-- Agrega más columnas según tus datos -->
+              <th>Fecha</th>
+              <th>Proveedor</th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(registro, index) in registros" :key="index">
+              <td>{{ registro.reId }}</td>
+              <!-- Muestra más datos según tus necesidades -->
+              <td>{{ registro.reFecha }}</td>
+              <td>{{ registro.proveedorPrId }}</td>
+             
+              
+              <!-- ... -->
+              <td>
+                <button @click="mostrarDetalle(registro)" class="btn btn-info btn-sm">
+                  Detalles
+                </button>
+              </td>
+              <td>
+                <button class="btn btn-danger btn-sm"> Eliminar </button>
+              </td>
+              <td>
+                <button class="btn btn-secondary btn-sm"> Update </button>
+              </td>
+            </tr>
+          </tbody>
         </table>
+      </div>
+  
+      <!-- Modal para detalles -->
+      
+      <div v-if="mostrarModal" class="modal">
+      <div class="modal-content">
+        <span class="cerrar" @click="cerrarModal">&times;</span>
+        <h3>Dimensiones</h3>
+        <p>Alto {{  detalle.altura }}  Ancho {{ detalle.ancho }}</p>
+
+        <h3>Especificamos</h3>
+        
+        <p>Rollo: {{ detalle.rollo }}</p>
+        <p>Peso: {{ detalle.peso }}</p>
+        <p>Tipo Tela : {{ detalle.tipoTela }}</p>
+        <p>Color: {{ detalle.color }} </p>
+
+        <h3>Valoracion de Grises: {{ detalle.valoracion }}</h3>
+
+        <h3>Absorcion Y Pilling</h3>
+        <p>Cantidad : {{ detalle.cantidad }} </p>
+        <p>Tiempo : {{ detalle.tiempo }}</p>
+        <p>Rango : {{ detalle.rango }}</p>
+
+        <h3>Resultado Prueba Cuantro Puntos: {{ detalle.puntuacion }}</h3>
+      </div>
     </div>
-    
-</template>
-<style scoped>
 
-        
-        .dts-container {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #7b8cb5;
-        }
-        
-        h1 {
-            text-align: center;
-            color: rgb(255, 255, 255);
-        }
-        
-        .search-bar {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
-        }
-        
-        .search-bar input[type="text"] {
-            padding: 10px;
-            width: 200px;
-        }
-        
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        
-        th {
-            background-color: #f2f2f2;
-        }
-        
-        @media (max-width: 600px) {
-            .search-bar {
-                justify-content: center;
-            }
-            
-            .search-bar input[type="text"] {
-                width: 100%;
-            }
-            
-            table {
-                font-size: 14px;
-            }
-        }
-</style>
 
-<script>
-console.log("data enabled")
-</script>
+    </div>
+  </template>
+  
+  <script>
+  import axios from 'axios';
+  
+  export default {
+    data() {
+      return {
+        registros: [], // Aquí se almacenarán los registros obtenidos de la respuesta
+        mostrarModal: false,
+        detalle: {} // Aquí se almacenarán los detalles del registro seleccionado
+      };
+    },
+    methods: {
+      async obtenerDatos() {
+        
+        // Realiza la solicitud GET a la URL
+        try {
+          let token = localStorage.getItem('token_access');
+          const response = await axios.get("http://localhost:8081/registro",
+          {headers:{
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'}});
+          this.registros = response.data;
+          console.log(response.data, "regi" , this.registros)
+          
+           // Asigna los datos de respuesta a la variable registros
+          
+        } catch (error) {
+          console.error("Error al obtener los datos:", error);
+        }
+      },
+      mostrarDetalle(registro) {
+      // Aquí puedes hacer una llamada a una API para obtener el apellido y la edad del item seleccionado
+      // Por simplicidad, asumiremos que ya tenemos los datos y los asignaremos al detalle
+      this.detalle = {
+        id: registro.id,
+       
+        edad: 22,
+
+        altura: registro.datosDimensiones.altura,
+        ancho : registro.datosDimensiones.ancho,
+        rollo: registro.especificaciones.rollo,
+        peso: registro.especificaciones.peso,
+        tipoTela: registro.especificaciones.tipoTela,
+        color: registro.especificaciones.color,
+        valoracion: registro.escalagrises.valoracion,
+        cantidad: registro.abpilling.cantidad,
+        tiempo: registro.abpilling.tiempo,
+        rango: registro.abpilling.rango,
+        puntuacion: registro.sispuntos.puntuacion
+
+
+
+
+
+
+
+
+      };
+
+      this.mostrarModal = true;
+    },
+    cerrarModal() {
+      this.mostrarModal = false;
+    }
+    },
+    mounted() {
+      this.obtenerDatos(); // Llama a la función para obtener los datos cuando el componente se monta
+    }
+  };
+  </script>
+  
+  <style scoped>
+  /* Agrega estilos específicos del componente aquí */
+
+  .modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.cerrar {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cerrar:hover,
+.cerrar:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+  </style>
+  
