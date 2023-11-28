@@ -1,5 +1,5 @@
 <template>
-     <div class="popup container ">
+     <div class="popup container" v-on:nuevo-registro="updateRegistro">
             
             <div class="row d-flex justify-content-center ">
                 <h2 class="row d-flex justify-content-center">Formulario de Calidad de Tela</h2>
@@ -88,7 +88,8 @@
 
                     </div>
                     <div class="form-group text-center">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                       
+                        <button type="submit" class="btn btn-primary">{{ modoEdicion ? 'Actualizar' : 'Guardar' }}</button>
                         <button @click.prevent="clear" class="btn btn-danger close-popup">Cerrar</button>
                     </div>
 
@@ -109,6 +110,8 @@ export default{
     components: {
         foter,
     },
+
+    
     data(){
         return{
             formData:{
@@ -136,7 +139,9 @@ export default{
                     "color": ''
                 }
            
-            }
+            },
+            modoEdicion: false,
+            
         }
     },
     methods:{
@@ -169,39 +174,77 @@ export default{
                 }
             };
             let token = localStorage.getItem("token_access");
-            //let token = '';
-            console.log("realizando registro" + datotoSend)
             
-            axios.post('http://localhost:8081/registro',datotoSend,
-            {headers:{
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'}})
-            .then((response) =>{
-                console.log("data response ok: ",response.data);
-                console.log('token '+token)
-                Swal.fire({
-                    icon: 'success',
-                    title: '¡Registro exitoso!',
-                    text: 'El registro se ha completado satisfactoriamente.',
-                    confirmButtonText: 'OK'
+            console.log("realizando registro" + datotoSend)
+
+
+
+            axios.post('http://localhost:8081/registro', datotoSend,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then((response) => {
+                    console.log("data response ok: ", response.data);
+                    console.log('token ' + token);
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Registro exitoso!',
+                        text: 'El registro se ha completado satisfactoriamente.',
+                        confirmButtonText: 'OK'
+                    });
+                }
+                ).catch((error) => {
+                    console.error(error + " data a enviar " + datotoSend, " data del error ", error.data);
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Registro fallido!',
+                        text: 'El registro no ha sido completado.',
+                        confirmButtonText: 'Cool'
+                    });
                 });
-            }
-            ).catch((error) =>{
-                console.error(error+ " data a enviar "+datotoSend, " data del error ", error.data);
-                Swal.fire({
-                    icon: 'error',
-                    title: '¡Registro fallido!',
-                    text: 'El registro no ha sido completado.',
-                    confirmButtonText: 'Cool'
-                });
-            });
             console.log("ffinal")
+
+
+            }
+            
 
         },
         clear(){
             this.$router.push({name: 'work'})
 
-        }
+        },
+        updateRegistro(){
+            axios
+            .put(`http://localhost:8081/actualizar/${this.formData.id}`, datotoSend, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then((response) => {
+                console.log('data response ok: ', response.data);
+                console.log('token ' + token);
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Actualización exitosa!',
+                    text: 'El registro se ha actualizado satisfactoriamente.',
+                    confirmButtonText: 'OK',
+                });
+            })
+            .catch((error) => {
+                console.error(error + ' data a enviar ' + datotoSend, ' data del error ', error.data);
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Actualización fallida!',
+                    text: 'La actualización no se ha completado.',
+                    confirmButtonText: 'Cool',
+                });
+                    });
+        
+
       
     },
 
