@@ -29,10 +29,10 @@
                 </button>
               </td>
               <td>
-                <button class="btn btn-danger btn-sm"> Eliminar </button>
+                <button class="btn btn-danger btn-sm" @click="deleteRegistry(registro.reId)"> Eliminar </button>
               </td>
               <td>
-                <button class="btn btn-secondary btn-sm"> Update </button>
+                <button class="btn btn-secondary btn-sm"  @click="update(registro)"> Update </button>
               </td>
             </tr>
           </tbody>
@@ -64,28 +64,35 @@
         <h3>Resultado Prueba Cuantro Puntos: {{ detalle.puntuacion }}</h3>
       </div>
     </div>
+    
 
 
     </div>
   </template>
   
   <script>
+
   import axios from 'axios';
+  import Swal from 'sweetalert2';
+  const token = localStorage.getItem('token_access');
   
   export default {
+
     data() {
       return {
         registros: [], // Aquí se almacenarán los registros obtenidos de la respuesta
         mostrarModal: false,
-        detalle: {} // Aquí se almacenarán los detalles del registro seleccionado
+        detalle: {},
+        registroSeleccionado: null, // Aquí se almacenarán los detalles del registro seleccionado
       };
     },
     methods: {
       async obtenerDatos() {
+        console.log("obteeniendo datos: ",token);
         
         // Realiza la solicitud GET a la URL
         try {
-          let token = localStorage.getItem('token_access');
+          
           const response = await axios.get("http://localhost:8081/registro",
           {headers:{
                 'Authorization': `Bearer ${token}`,
@@ -104,9 +111,6 @@
       // Por simplicidad, asumiremos que ya tenemos los datos y los asignaremos al detalle
       this.detalle = {
         id: registro.id,
-       
-        edad: 22,
-
         altura: registro.datosDimensiones.altura,
         ancho : registro.datosDimensiones.ancho,
         rollo: registro.especificaciones.rollo,
@@ -118,18 +122,43 @@
         tiempo: registro.abpilling.tiempo,
         rango: registro.abpilling.rango,
         puntuacion: registro.sispuntos.puntuacion
-
-
-
-
-
-
-
-
       };
 
       this.mostrarModal = true;
     },
+
+    async deleteRegistry(id){
+      try {
+        const res = await axios.delete(`http://localhost:8081/registro/${id}`,
+        {headers:{
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'}})
+                .then(
+                  Swal.fire({
+                    icon: 'success',
+                    title: '¡Registro eliminado!',
+                    text: 'El registro se ha eliminado.',
+                    confirmButtonText: 'OK'
+                  })                  
+                );
+      } catch (error) {
+        alert("El registro no ha podido ser eliminado");
+        
+      }
+    },
+
+    update(registro){
+      //llamar a Form
+      console.log("lamando update", registro)
+     
+      this.$emit('nuevoregistro', { registro, modoEdicion: true});
+      console.log("se emitio evento")
+      
+   
+    },
+    
+
+
     cerrarModal() {
       this.mostrarModal = false;
     }
