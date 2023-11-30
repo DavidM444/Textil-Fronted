@@ -1,9 +1,9 @@
-<template>
-     <div class="popup container" v-on:nuevo-registro="updateRegistro">
+<template >
+     <div class="popup container">
             
             <div class="row d-flex justify-content-center ">
                 <h2 class="row d-flex justify-content-center">Formulario de Calidad de Tela</h2>
-                <form class="row" @submit.prevent="submitform"> 
+                <form class="row" @submit.prevent="submitform" > 
                     <div class="col">
                         <div class="form-group">
                             <label for="Rollo">Rollo</label>
@@ -42,8 +42,8 @@
                       
                         <div class="form-group">
                             <label for="absorcion">Absorción Pilling:</label>
-                            <input v-model="formData.cantidad"  type="number" id="cantidad" name="cantidad" placeholder="cantidad" required>
-                            <input v-model="formData.tiempo" type="number" id="tiempo" name="tiempo" placeholder="tiempo" required>
+                            <input v-model="formData.cantidad" id="cantidad" name="cantidad" placeholder="cantidad" required>
+                            <input v-model="formData.tiempo"  id="tiempo" name="tiempo" placeholder="tiempo" required>
                             <input v-model="formData.rango" type="number" id="rango" name="rango" placeholder="rango" required>
                         </div>
                         <div class="form-group">
@@ -104,12 +104,17 @@
 import axios from 'axios';
 import foter from './footer.vue'
 import Swal from 'sweetalert2'
+import _ from 'lodash';
+
+console.log("evento form ",);
 
 export default{
     name: "Form",
+    
     components: {
         foter,
     },
+   
 
     
     data(){
@@ -117,34 +122,27 @@ export default{
             formData:{
                 "fecha": '',
                 "proveedor": null,
-                "dimensiones":{
-                    "altura":null,
-                    "ancho":null
-                },
-                "escalagrises": {
-                    "valoracion": null
-                },
-                "sispuntos": {
-                    "puntuacion": null
-                },
-                "abpilling": {
-                    "cantidad": null,
-                    "tiempo": null,
-                    "rango": null
-                },
-                "especificaciones": {
-                    "rollo": null,
-                    "peso": null,
-                    "tipoTela": '',
-                    "color": ''
-                }
+                "altura":null,
+                "ancho":null,
+                "valoracion": null,
+                "puntuacion": null,
+                "cantidad": null,
+                "tiempo": null,
+                "rango": null,
+                "rollo": null,
+                "peso": null,
+                "tipoTela": '',
+                "color": ''
+            
            
             },
             modoEdicion: false,
+            registroUpdate: {},
             
         }
     },
     methods:{
+     
         
         submitform(){
             console.log("antes del data");
@@ -152,8 +150,8 @@ export default{
                 "fecha": this.formData.fecha,
                 "proveedor":this.formData.proveedor,
                 "dimensiones":{
-                    "altura":this.formData.altura,
-                    "ancho":this.formData.ancho
+                    "altura": this.formData.altura,  // Cambiado aquí
+                    "ancho": this.formData.ancho
                 },
                 "escalagrises": {
                     "valoracion": this.formData.valoracion
@@ -175,11 +173,11 @@ export default{
             };
             let token = localStorage.getItem("token_access");
             
-            console.log("realizando registro" + datotoSend)
+            console.log("realizando registro" + datotoSend);
 
 
-
-            axios.post('http://localhost:8081/registro', datotoSend,
+            function Guardar(){
+                axios.post('http://localhost:8081/registro', datotoSend,
                 {
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -205,20 +203,22 @@ export default{
                         confirmButtonText: 'Cool'
                     });
                 });
-            console.log("ffinal")
+            };
 
 
-            }
-            
+            function Actualizar(id){
+                
+             
+               let dataUpdate = {...datotoSend,id};
+               let calificacion = dataUpdate.escalagrises.valoracion;
+               
+               dataUpdate = {...dataUpdate,escalagrises: {...dataUpdate.escalagrises,calificacion}};
+               delete dataUpdate.escalagrises.valoracion;
+               console.log("id", id, " datoooo ", dataUpdate);
 
-        },
-        clear(){
-            this.$router.push({name: 'work'})
 
-        },
-        updateRegistro(){
-            axios
-            .put(`http://localhost:8081/actualizar/${this.formData.id}`, datotoSend, {
+                axios
+            .put('http://localhost:8081/registro', dataUpdate, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -243,10 +243,72 @@ export default{
                     confirmButtonText: 'Cool',
                 });
                     });
+            };
+
+           
+        
+            this.modoEdicion? Actualizar(this.registroUpdate.reId): Guardar();
+            
+            console.log("ffinal");
+            }
+
+        },
+        clear(){
+            this.$router.push({name: 'work'})
+        },
+        mounted(){
+            const modo = this.$route.params.modoEdicion;
+            modo?this.modoEdicion=true:this.modoEdicion=false;
+            if(this.modoEdicion){    
+     
+            let reg = this.$route.params.registro;
+
+           
+            
+            const registro2 = JSON.parse(reg);
+            this.registroUpdate = registro2;
+            const datafinal = Convert(registro2);
+           console.log("datafinal antes dde agerefar: ", datafinal, " lll", this.registroUpdate)
+
+          
+            this.formData = datafinal; 
+            console.log("formdata ", this.formData)
+
+            }
+            
+       
         
 
-      
+            function Convert (obj){
+                console.log("data antes", obj)
+                let dat = {
+                    "fecha": obj.reFecha,
+                    "proveedor": obj.proveedorPrId,
+                
+                    "altura": obj.datosDimensiones.altura,
+                    "ancho": obj.datosDimensiones.ancho,
+
+                    "valoracion": obj.escalagrises.valoracion,
+
+                    "puntuacion": obj.sispuntos.puntuacion,
+
+                    "cantidad": obj.abpilling.cantidad,
+                    "tiempo": obj.abpilling.tiempo,
+                    "rango": obj.abpilling.rango,
+
+                    "rollo": obj.especificaciones.rollo,
+                    "peso": obj.especificaciones.peso,
+                    "tipoTela": obj.especificaciones.tipoTela,
+                    "color": obj.especificaciones.color
+
+                        
+                }
+                console.log("dat" , dat)
+                return dat;
+            }
+ 
     },
+
 
     
 }
