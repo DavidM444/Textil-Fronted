@@ -4,7 +4,7 @@ import SingUp from './components/SignUp.vue'
 import Login from './components/Login.vue'
 import Work from './components/Work.vue'
 import Datos from './components/Datos.vue'
-import Grafico from './components/Grafico.vue'
+import Grafico from './components/Appgrafico.vue'
 import Try from './components/try.vue'
 import Form from './components/Form.vue'
 import Home from './components/Home.vue'
@@ -33,9 +33,16 @@ const routes = [
     component:Work
   },
   {
+    path: '/work/form/:modoEdicion/:registro',
+    name: "formUp",
+    component: Form,
+    props: true
+  },
+  {
     path: '/work/form',
     name: "form",
-    component: Form
+    component: Form,
+    
   },
   {
     path:'/datos',
@@ -43,6 +50,7 @@ const routes = [
     component: Datos
 
   },
+
   {
     path:'/grafico',
     name: 'grafico',
