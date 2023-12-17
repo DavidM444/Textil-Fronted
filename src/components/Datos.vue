@@ -16,10 +16,10 @@
           </thead>
           <tbody>
             <tr v-for="(registro, index) in registros" :key="index">
-              <td>{{ registro.reId }}</td>
+              <td>{{ registro.id }}</td>
               <!-- Muestra más datos según tus necesidades -->
-              <td>{{ registro.reFecha }}</td>
-              <td>{{ registro.proveedorPrId }}</td>
+              <td>{{ registro.fecha }}</td>
+              <td>{{ registro.proveedor }}</td>
              
               
               <!-- ... -->
@@ -54,14 +54,14 @@
         <p>Tipo Tela : {{ detalle.tipoTela }}</p>
         <p>Color: {{ detalle.color }} </p>
 
-        <h3>Valoracion de Grises: {{ detalle.valoracion }}</h3>
+        <h3>Valoracion de Grises: </h3><p>Valoracion: {{ detalle.valoracion }}</p>
 
         <h3>Absorcion Y Pilling</h3>
         <p>Cantidad : {{ detalle.cantidad }} </p>
         <p>Tiempo : {{ detalle.tiempo }}</p>
-        <p>Rango : {{ detalle.rango }}</p>
+        <p>Rango : {{ detalle.consideracion }}</p>
 
-        <h3>Resultado Prueba Cuantro Puntos: {{ detalle.puntuacion }}</h3>
+        <h3>Resultado Prueba Cuantro Puntos: </h3><p>Estado: {{ detalle.estado }}</p>
       </div>
     </div>
     
@@ -120,8 +120,8 @@
         valoracion: registro.escalagrises.valoracion,
         cantidad: registro.abpilling.cantidad,
         tiempo: registro.abpilling.tiempo,
-        rango: registro.abpilling.rango,
-        puntuacion: registro.sispuntos.puntuacion
+        consideracion: registro.abpilling.consideracion,
+        estado: registro.sispuntos.estado
       };
 
       this.mostrarModal = true;
