@@ -138,6 +138,7 @@ export default{
             },
             modoEdicion: false,
             registroUpdate: {},
+            proveedor: {}
             
         }
     },
@@ -253,10 +254,10 @@ export default{
             }
 
         },
-        clear(){
+    clear(){
             this.$router.push({name: 'work'})
         },
-        mounted(){
+    mounted(){
             const modo = this.$route.params.modoEdicion;
             modo?this.modoEdicion=true:this.modoEdicion=false;
             if(this.modoEdicion){    
@@ -274,16 +275,23 @@ export default{
             this.formData = datafinal; 
             console.log("formdata ", this.formData)
 
-            }
+
+            //traer datos del proveedor
+            use.datosProveedor();
+            console.log("data proveedor traidda: "+ this.proveedor)
+
+           
             
-       
+
+            }
+
         
 
             function Convert (obj){
                 console.log("data antes", obj)
                 let dat = {
-                    "fecha": obj.reFecha,
-                    "proveedor": obj.proveedorPrId,
+                    "fecha": obj.fecha,
+                    "proveedor": obj.proveedor,
                 
                     "altura": obj.datosDimensiones.altura,
                     "ancho": obj.datosDimensiones.ancho,
@@ -309,6 +317,17 @@ export default{
  
     },
 
+            
+    use :{
+        datosProveedor(){
+            axios.get('http://localhost:8081/proveedor')
+                .then((result)=>{
+                    this.proveedor = result.data;
+                })
+
+            }
+    },
+        
 
     
 }
