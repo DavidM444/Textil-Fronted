@@ -3,6 +3,7 @@
             
             <div class="row d-flex justify-content-center ">
                 <h2 class="row d-flex justify-content-center">Formulario de Calidad de Tela</h2>
+
                 <form class="row" @submit.prevent="submitform" > 
                     <div class="col">
                         <div class="form-group">
@@ -12,7 +13,7 @@
 
                         <div class="form-group">
                             <label for="peso">Peso</label>
-                            <input v-model="formData.peso" type="text" id="peso" name="peso" required>
+                            <input v-model="formData.peso" type="number" step="0.001" id="peso" name="peso" required>
                         </div>
 
                         <div class="form-group">
@@ -22,12 +23,9 @@
                         
                         <div class="form-group">
                             <label for="proveeddor">Provedor</label>
-                            <select id="tacos" name="tacos" v-model="formData.proveedor">
-                                <option value=1>TextilNova</option>
-                                <option value=2>TelasMundo</option>
-                                <option value=3>EleganceFabrics</option>
-                                <option value=4>FashionFabrics</option>
-                                <option value=6>GlobalTextiles</option>
+                            <select  v-for="(prov,index) in proveedor" :key="index" id="proveedor" name="proveedor" v-model="formData.proveedor">
+                                <option :value="prov.id" >{{ modoEdicion?  formData.proveedor : prov.nombre}}</option> //usar prov.nombre o proveedor.nombre
+                                
                             </select>
                         </div>
 
@@ -44,7 +42,14 @@
                             <label for="absorcion">Absorción Pilling:</label>
                             <input v-model="formData.cantidad" id="cantidad" name="cantidad" placeholder="cantidad" required>
                             <input v-model="formData.tiempo"  id="tiempo" name="tiempo" placeholder="tiempo" required>
-                            <input v-model="formData.rango" type="number" id="rango" name="rango" placeholder="rango" required>
+                            <select name="rango" id="rango" v-model="formData.rango">
+                                <option value="1">Cambio Severo</option>
+                                <option value="2">Cambio Considerable</option>
+                                <option value="3">Formacion Pilling</option>
+                                <option value="4">Pilling</option>
+                                <option value="5">No Hay Pilling</option>
+                            </select>
+                            
                         </div>
                         <div class="form-group">
                             <label for="cuatropuntos">Cuatro Puntos:</label>
@@ -55,18 +60,18 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="">Dimensiones</label>
-                            <input type="number" name="ancho" id="ancho" placeholder="ancho" v-model="formData.ancho">
-                            <input type="number" name="alto" id="alto" placeholder="alto" v-model="formData.altura">
+                            <input type="number" step="0.01" name="ancho" id="ancho" placeholder="ancho" v-model="formData.ancho">
+                            <input type="number" step="0.01" name="alto" id="alto" placeholder="alto" v-model="formData.altura">
 
                         </div>
                         <div class="form-group">
                             <label for="tipoTela">Tipo de Tela</label>
                             <select v-model="formData.tipoTela" name="telas" id="telas">
-                                <option>algodon</option>
-                                <option>lino</option>
+                                <option value="Algodon">Algodon</option>
+                                <option value="Lino">Lino</option>
                                 <option value="Seda">Seda</option>
                                 <option value="Lana">Lana</option>
-                                <option value="Poliester">Pliester</option>
+                                <option value="Poliester">Poliester</option>
                                 <option value="Nylon">Nylon</option>
                                 <option value="Denim">Denim</option>
                                 <option value="Terciopelo">Terciopelo</option>
@@ -77,12 +82,12 @@
                         <div class="form-group">
                             <label for="color">Color</label>
                             <select v-model="formData.color" name="colores" id="color">
-                                <option value="Azul">azul</option>
-                                <option value="Rojo">rojo</option>
-                                <option value="Verde">verde</option>
-                                <option value="Negro">negro</option>
-                                <option value="Amarillo">amarillo</option>
-                                <option value="Blanco">blanco</option>
+                                <option value="Azul">Azul</option>
+                                <option value="Rojo">Rojo</option>
+                                <option value="Verde">Verde</option>
+                                <option value="Negro">Negro</option>
+                                <option value="Amarillo">Amarillo</option>
+                                <option value="Blanco">Blanco</option>
                             </select>
                         </div>
 
@@ -103,18 +108,24 @@
 <script>
 import axios from 'axios';
 import foter from './footer.vue'
-import Swal from 'sweetalert2'
+
 import _ from 'lodash';
+import { saveRegistry, upodateRegistry, getProveedor, updateRegistry, SwalFireAlert } from './peticiones/http'
 
 console.log("evento form ",);
 
 export default{
+
+
+    
     name: "Form",
+    
     
     components: {
         foter,
     },
    
+    
 
     
     data(){
@@ -138,14 +149,21 @@ export default{
             },
             modoEdicion: false,
             registroUpdate: {},
-            proveedor: {}
+            proveedor: [],
             
+           
+
         }
+        
     },
+
     methods:{
-     
+        
+      
         
         submitform(){
+          
+            
             console.log("antes del data");
             const datotoSend={
                 "fecha": this.formData.fecha,
@@ -173,43 +191,36 @@ export default{
                 }
             };
             let token = localStorage.getItem("token_access");
+            const head = {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            }
             
             console.log("realizando registro" + datotoSend);
 
 
             function Guardar(){
-                axios.post('http://localhost:8081/registro', datotoSend,
-                {
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then((response) => {
-                    console.log("data response ok: ", response.data);
-                    console.log('token ' + token);
-                    Swal.fire({
-                        icon: 'success',
-                        title: '¡Registro exitoso!',
-                        text: 'El registro se ha completado satisfactoriamente.',
-                        confirmButtonText: 'OK'
-                    });
-                }
-                ).catch((error) => {
-                    console.error(error + " data a enviar " + datotoSend, " data del error ", error.data);
-                    Swal.fire({
-                        icon: 'error',
-                        title: '¡Registro fallido!',
-                        text: 'El registro no ha sido completado.',
-                        confirmButtonText: 'Cool'
-                    });
-                });
-            };
+               //http saveRegistry
+               console.log("guardando datos ",datotoSend )
+               saveRegistry(datotoSend,head)
+                        .then((response) => {
+                            console.log("data response ok: ", response.data);
+                            console.log('token ' + token);
+                            SwalFireAlert(
+                                'success', '¡Registro exitoso!', 'El registro se ha completado satisfactoriamente.',
+                                'OK'
+                            );
+                        }
+                        ).catch((error) => {
+                            SwalFireAlert("error", "¡Registro fallido!", "El registro no ha sido completado.", "Cool")
+                        });;
+                };
 
 
             function Actualizar(id){
                 
-             
                let dataUpdate = {...datotoSend,id};
                let calificacion = dataUpdate.escalagrises.valoracion;
                
@@ -218,117 +229,90 @@ export default{
                console.log("id", id, " datoooo ", dataUpdate);
 
 
-                axios
-            .put('http://localhost:8081/registro', dataUpdate, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'application/json',
-                },
-            })
-            .then((response) => {
-                console.log('data response ok: ', response.data);
-                console.log('token ' + token);
-                Swal.fire({
-                    icon: 'success',
-                    title: '¡Actualización exitosa!',
-                    text: 'El registro se ha actualizado satisfactoriamente.',
-                    confirmButtonText: 'OK',
-                });
-            })
-            .catch((error) => {
-                console.error(error + ' data a enviar ' + datotoSend, ' data del error ', error.data);
-                Swal.fire({
-                    icon: 'error',
-                    title: '¡Actualización fallida!',
-                    text: 'La actualización no se ha completado.',
-                    confirmButtonText: 'Cool',
-                });
-                    });
-            };
+               //upodateRegistry
+               updateRegistry(dataUpdate,head).then((response) => {
 
-           
+                      
+                        SwalFireAlert('success', '¡Actualización exitosa!', 'El registro se ha actualizado satisfactoriamente.', 'OK',
+                        );
+                    })
+                        .catch((error) => {
+
+                            SwalFireAlert('error', '¡Actualización fallida!', 'La actualización no se ha completado.', 'Cool',
+                            );
+                        });
+
+                };
         
             this.modoEdicion? Actualizar(this.registroUpdate.reId): Guardar();
-            
             console.log("ffinal");
-            }
+        },
+    },
 
-        },
-    clear(){
-            this.$router.push({name: 'work'})
-        },
-    mounted(){
-            const modo = this.$route.params.modoEdicion;
-            modo?this.modoEdicion=true:this.modoEdicion=false;
-            if(this.modoEdicion){    
-     
+    clear() {
+        this.$router.push({ name: 'work' })
+    },
+
+    mounted() {
+        const modo = this.$route.params.modoEdicion;
+        modo ? this.modoEdicion = true : this.modoEdicion = false;
+        if (this.modoEdicion) {
+
             let reg = this.$route.params.registro;
 
-           
-            
             const registro2 = JSON.parse(reg);
             this.registroUpdate = registro2;
             const datafinal = Convert(registro2);
-           console.log("datafinal antes dde agerefar: ", datafinal, " lll", this.registroUpdate)
+            console.log("datafinal antes dde agerefar: ", datafinal, " lll", this.registroUpdate)
 
-          
-            this.formData = datafinal; 
+
+            this.formData = datafinal;
             console.log("formdata ", this.formData)
 
+            //traer datos del 
+            console.log("data proveedor traidda: " + this.proveedor)
 
-            //traer datos del proveedor
-            use.datosProveedor();
-            console.log("data proveedor traidda: "+ this.proveedor)
-
-           
+        }
+        //http js
+        getProveedor().then((result) => {
+            this.proveedor = result.data;
+            console.log("data proveedor ",this.proveedor)
+        }).catch((error) => {
+            console.log("error ", error);
             
-
-            }
-
+        });
         
 
-            function Convert (obj){
-                console.log("data antes", obj)
-                let dat = {
-                    "fecha": obj.fecha,
-                    "proveedor": obj.proveedor,
-                
-                    "altura": obj.datosDimensiones.altura,
-                    "ancho": obj.datosDimensiones.ancho,
 
-                    "valoracion": obj.escalagrises.valoracion,
+        function Convert(obj) {
+            console.log("data antes", obj)
+            let dat = {
+                "fecha": obj.fecha,
+                "proveedor": obj.proveedor,
 
-                    "puntuacion": obj.sispuntos.puntuacion,
+                "altura": obj.datosDimensiones.altura,
+                "ancho": obj.datosDimensiones.ancho,
 
-                    "cantidad": obj.abpilling.cantidad,
-                    "tiempo": obj.abpilling.tiempo,
-                    "rango": obj.abpilling.rango,
+                "valoracion": obj.escalagrises.valoracion,
 
-                    "rollo": obj.especificaciones.rollo,
-                    "peso": obj.especificaciones.peso,
-                    "tipoTela": obj.especificaciones.tipoTela,
-                    "color": obj.especificaciones.color
+                "puntuacion": obj.sispuntos.puntuacion,
 
-                        
-                }
-                console.log("dat" , dat)
-                return dat;
-            }
- 
-    },
+                "cantidad": obj.abpilling.cantidad,
+                "tiempo": obj.abpilling.tiempo,
+                "rango": obj.abpilling.rango,
 
-            
-    use :{
-        datosProveedor(){
-            axios.get('http://localhost:8081/proveedor')
-                .then((result)=>{
-                    this.proveedor = result.data;
-                })
+                "rollo": obj.especificaciones.rollo,
+                "peso": obj.especificaciones.peso,
+                "tipoTela": obj.especificaciones.tipoTela,
+                "color": obj.especificaciones.color
+
 
             }
-    },
-        
+            console.log("dat", dat)
+            return dat;
+        }
 
+    }
     
 }
 </script>
