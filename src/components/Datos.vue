@@ -29,7 +29,7 @@
                 </button>
               </td>
               <td>
-                <button class="btn btn-danger btn-sm" @click="deleteRegistry(registro.reId)"> Eliminar </button>
+                <button class="btn btn-danger btn-sm" @click="deleteRegistry(registro.id)"> Eliminar </button>
               </td>
               <td>
                 <button class="btn btn-secondary btn-sm"  @click="update(registro)"> Update </button>
@@ -120,8 +120,8 @@
         valoracion: registro.escalagrises.valoracion,
         cantidad: registro.abpilling.cantidad,
         tiempo: registro.abpilling.tiempo,
-        consideracion: registro.abpilling.consideracion,
-        estado: registro.sispuntos.estado
+        consideracion: registro.abpilling.rango,
+        estado: registro.sispuntos.puntuacion
       };
 
       this.mostrarModal = true;
@@ -129,6 +129,7 @@
 
     async deleteRegistry(id){
       try {
+        console.log("id delete ",id)
         const res = await axios.delete(`http://localhost:8081/registro/${id}`,
         {headers:{
                 'Authorization': `Bearer ${token}`,
