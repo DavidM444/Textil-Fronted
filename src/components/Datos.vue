@@ -15,7 +15,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(registro, index) in registros" :key="index">
+            <tr v-for="(registro, index) in registros" :key="index" >
               <td>{{ registro.id }}</td>
               <!-- Muestra más datos según tus necesidades -->
               <td>{{ registro.fecha }}</td>
@@ -73,7 +73,7 @@
   <script>
 
   import axios from 'axios';
-  import Swal from 'sweetalert2';
+  import { deletePeticion, getRegistros, SwalFireAlert } from './peticiones/http'
   const token = localStorage.getItem('token_access');
   
   export default {
@@ -86,6 +86,10 @@
         registroSeleccionado: null, // Aquí se almacenarán los detalles del registro seleccionado
       };
     },
+
+    computed: {
+
+    },
     methods: {
       async obtenerDatos() {
         console.log("obteeniendo datos: ",token);
@@ -93,10 +97,7 @@
         // Realiza la solicitud GET a la URL
         try {
           
-          const response = await axios.get("http://localhost:8081/registro",
-          {headers:{
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'}});
+          const response = await getRegistros();
           this.registros = response.data;
           console.log(response.data, "regi" , this.registros)
           
@@ -130,17 +131,8 @@
     async deleteRegistry(id){
       try {
         console.log("id delete ",id)
-        const res = await axios.delete(`http://localhost:8081/registro/${id}`,
-        {headers:{
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'}})
-                .then(
-                  Swal.fire({
-                    icon: 'success',
-                    title: '¡Registro eliminado!',
-                    text: 'El registro se ha eliminado.',
-                    confirmButtonText: 'OK'
-                  })                  
+        await deletePeticion(id).then(
+                  SwalFireAlert('success','¡Registro eliminado!','El registro se ha eliminado.','OK')                  
                 );
       } catch (error) {
         alert("El registro no ha podido ser eliminado");

@@ -18,7 +18,7 @@
 
                         <div class="form-group">
                             <label for="valoracion">Valoracion Grises</label>
-                            <input v-model="formData.valoracion" type="text" id="valoracion" name="valoracion" required>
+                            <input v-model="formData.valoracion" type="text" id="valoracion" name="valoracion" min="0" max="15" required>
                         </div>
                         
                         <div class="form-group">
@@ -60,7 +60,7 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="">Dimensiones</label>
-                            <input type="number" step="0.01" name="ancho" id="ancho" placeholder="ancho" v-model="formData.ancho">
+                            <input type="number" step="0.01" name="ancho" id="ancho" placeholder="ancho" title="use valores en cm" v-model="formData.ancho">
                             <input type="number" step="0.01" name="alto" id="alto" placeholder="alto" v-model="formData.altura">
 
                         </div>
