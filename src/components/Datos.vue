@@ -96,8 +96,12 @@
         
         // Realiza la solicitud GET a la URL
         try {
-          
-          const response = await getRegistros();
+          const head = { headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            }} 
+
+          const response = await axios.get("http://localhost:8081/registro",head);
           this.registros = response.data;
           console.log(response.data, "regi" , this.registros)
           
