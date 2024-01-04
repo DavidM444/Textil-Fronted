@@ -1,15 +1,11 @@
 <template>
     <h2 class="text-center bg-warning">Grafico De Registros</h2>
     <div>
-
-
       <div class="row mt-3">
         <div class="col-md-6 offset-md-3">
           <div class="card border border-dark">
             <div class="card-header bg-dark"></div>
             <div class="card-body">
-               
-              
                 <Bar v-if="loaded" :data="chartData" id="my-chart-id"/>
             </div>
           </div>
@@ -21,7 +17,7 @@
 <script>
 
 const token = localStorage.getItem('token_access');
-import { getRegistros } from './peticiones/http'
+import { getDatosGraphic } from './peticiones/http'
 
 import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
@@ -43,6 +39,7 @@ export default {
   }),
   async mounted () {
     this.loaded = false
+    this.etiquetas.push("Bajo", "Moderado", "Alto", "Excelente")
 
     const head = {
                 headers: {
@@ -51,20 +48,24 @@ export default {
                 }
             }
 
-    const registrosData = await getRegistros(head);
+    const registrosData = await getDatosGraphic(head);
     console.log("data ", registrosData, "tpp ", registrosData.data)
+
+    //puedo quitar las variables let y pasasr directamente los campos del json al array de valoraes: line 65
+            const datosInfo = registrosData.data;
+            let datosBajos = datosInfo.bajo;
+            let datosModerados = datosInfo.moderado;
+            let datosAltos = datosInfo.alto;
+            let datosExcelentes = datosInfo.excelente;
+
     try {
       this.loaded = false;
-
-  
-      registrosData.data.map((row)=>(
-        this.etiquetas.push(row.especificaciones.tipoTela),
-        this.valores.push(row.datosDimensiones.altura)
-      ))
+      this.valores.push(datosBajos,datosModerados,datosAltos,datosExcelentes);
+   
       this.chartData = {
         labels: this.etiquetas,
         datasets: [
-          {label: 'Registros', data: this.valores,backgroundColor: ['#4F6F52','#80BCBD','#F3B664'] }
+          {label: 'Registros', data: this.valores,backgroundColor: ['#4F6F52','#80BCBD','#F3B664','#FFB534'] }
         ]
       }
 
