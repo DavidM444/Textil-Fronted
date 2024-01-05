@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid cont">
-    <div class="row ">
+    <div class="row">
       <div class="col">
         <div class="container-fluid pt-3">
           <div class="d-flex logo">
@@ -12,11 +12,10 @@
             <div class="card login">
               <h2 class="text-center">Iniciar Sesión</h2>
               <div class="d-flex  justify-content-center align-items-center">
-                <img class="m-3 m1 " src="../assets/img/facebook.png" alt="Card image cap">
+                <img class="m-3 m1 " src="../assets/img/facebook.png" alt="Card image cap"   @click="redirect('https://www.facebook.com/login')">
                 <img class="m-3 m1" src="../assets/img/google.png" alt="Card image cap">
                 <img class="m-3" src="../assets/img/icons8-apple-logo-64.png" alt="Card image cap">
               </div>
-
             </div>
           </div>
 
@@ -27,7 +26,7 @@
                 <input v-model="user.username" type="email" class="form-control" id="email" placeholder="Ingresa tu correo electrónico" required>
               </div>
               <div class="form-group">
-                <label  for="password">Contraseña:</label>
+                <label for="password">Contraseña:</label>
                 <input v-model="user.password" type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
               </div>
               <div class="text-center">
@@ -172,6 +171,9 @@ export default {
         
             alert("ERROR 401: Credenciales Incorrectas.");
         });
+    },
+    redirect(linkpage){
+      window.location.href= linkpage;
     }
   },
   components: {

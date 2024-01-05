@@ -2,21 +2,19 @@
     <div class="container-fluid">
         <div class="row head">
                 <div class="col-sm-8 text-md-left d-flex logo ">
-                    <img class="" src="../assets/img/T.png" alt="">
-                    <h1 class="align-self-center">QualityTex</h1>
+                    <img src="../assets/img/T.png" alt="">
+                    <h1 class="align-self-center text-md">QualityTex</h1>
                 </div>
 
                 <div class="col-sm-4 text-center align-self-center mt-sm-0 mt-3 mb-sm-0 mb-3">
-                    <RouterLink class="btn btn-primary link" to="/">Inciar Sesion</RouterLink>
+                    <RouterLink class="btn btn-primary link" to="/login">Iniciar Sesion</RouterLink>
                     <RouterLink class="btn btn-success link" to="/singup">Registrarse</RouterLink>
-                </div>
-
-            
+                </div>    
 
         </div>
-        <div class="row info bg-warning">
+        <div class="row info">
             <div class="est">
-                <h2>Estandares de calidad textil</h2>
+                <h2>Estándares de calidad textil</h2>
                 <p>Los estándares de calidad en la industria textil son criterios fundamentales para garantizar la
                     excelencia en
                     los productos y servicios. Estos estándares se establecen con el propósito de asegurar que los textiles
@@ -39,10 +37,9 @@
             </div>
             <div class="est">
 
-                <h2>Innovaciones En el ambito textil</h2>
+                <h2>Innovaciones en el ámbito textil</h2>
 
                 <p>
-
                     Las innovaciones en textiles han revolucionado la industria, introduciendo nuevos materiales y
                     tecnologías que
                     mejoran la calidad y funcionalidad de los productos textiles. Estas novedades han impactado en diversas
@@ -109,49 +106,53 @@
 
                 </p>
             </div>
-            <div class="est2">
-                <h2>Calidad de confección</h2>
-                <p>
+            <div class="est2 ">
+                <div class="col-md-10 offset-md-1">
+                    <h2 class="">Calidad de confección</h2>
+                     <p>
                     La calidad de confección en la industria textil es un aspecto fundamental para garantizar la
                     satisfacción del
                     cliente y la durabilidad de los productos. Una buena calidad de confección no solo se refiere a la
                     apariencia
                     estética de una prenda, sino también a su resistencia y comodidad durante el uso. A continuación,
                     exploraremos
-                    la importancia de la calidad de confección y los elementos clave que influyen en ella. <br>
+                    la importancia de la calidad de confección y los elementos clave que influyen en ella. </p>
 
+                    <p>
                     Uno de los pilares de la calidad de confección es la precisión en los detalles y acabados. Las costuras
                     bien
                     cosidas y los remates limpios son indicadores de una prenda bien elaborada. Los bordes sin deshilacharse
                     y los
-                    dobladillos bien hechos son signos de atención al detalle y cuidado en el proceso de confección. <br>
+                    dobladillos bien hechos son signos de atención al detalle y cuidado en el proceso de confección.</p>
 
-                    Otro aspecto crucial es el uso de materiales adecuados. Los textiles de calidad, combinados con los
+                    <p>Otro aspecto crucial es el uso de materiales adecuados. Los textiles de calidad, combinados con los
                     hilos y
                     accesorios apropiados, aseguran que la prenda mantenga su forma y resistencia a lo largo del tiempo. Un
                     buen
                     equilibrio entre la selección de materiales y el proceso de producción es esencial para lograr una
                     calidad
-                    óptima. <br>
+                    óptima.</p>
 
-                    Además, la calidad de la confección se relaciona con el ajuste y la funcionalidad de la prenda. Las
+                    <p>Además, la calidad de la confección se relaciona con el ajuste y la funcionalidad de la prenda. Las
                     prendas bien
                     diseñadas y confeccionadas deben adaptarse correctamente al cuerpo, permitiendo la libertad de
                     movimiento y
                     evitando restricciones incómodas. Los cierres, botones y cremalleras deben ser duraderos y funcionales,
-                    facilitando el uso y prolongando la vida útil de la prenda. <br>
+                    facilitando el uso y prolongando la vida útil de la prenda.
 
                     El control de calidad durante todo el proceso de producción es esencial para garantizar la excelencia en
                     la
                     confección. Inspecciones regulares y pruebas de calidad ayudan a identificar posibles problemas y a
                     corregirlos
-                    antes de que las prendas lleguen al mercado.
+                    antes de que las prendas lleguen al mercado.</p>
 
-                    La calidad de confección no solo se aplica a la moda, sino también a otros productos textiles, como ropa
+                    <p>La calidad de confección no solo se aplica a la moda, sino también a otros productos textiles, como ropa
                     de
                     cama, toallas y cortinas. En estos casos, la durabilidad y resistencia son factores clave para asegurar
                     que los
                     productos mantengan su aspecto y rendimiento a lo largo del tiempo.</p>
+                </div>
+               
             </div>
 
         </div>
@@ -186,19 +187,38 @@
 $tex-w: #f2f7f5;
 $bgcolor: #00473e;
 $nar: #faae2b;
+$succes: #198754;
 
-
+.info{
+    background-color: $tex-w;
+}
 
 .est{
     background-color: #f2f7f5;
     padding: 1% 5%;
+    h2{
+        color: $bgcolor;
+    }
+    strong{
+        color: $succes;
+    }
+   
+}
+.est p{
+    font-size: smaller;
 }
 .est2{
-    background-color: #00473e;
-    padding: 2%;
+    background-color: $bgcolor;
+    padding: 1% 5%;
+    
+    h2{
+        color: $succes;
+    }
 }
 .est2 p{
     color: #f2f7f5;
+    font-size: smaller;
+    
 }
 .head{
     background-color: #00473e;
@@ -222,7 +242,7 @@ $nar: #faae2b;
 }
 
 .logo h1 {
-    color: chartreuse;
+    color: $succes;
     margin: auto;
 }
 </style>

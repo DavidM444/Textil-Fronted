@@ -88,6 +88,7 @@
                                 <option value="Negro">Negro</option>
                                 <option value="Amarillo">Amarillo</option>
                                 <option value="Blanco">Blanco</option>
+                                <option value="Cafe">Cafe</option>
                             </select>
                         </div>
 
@@ -110,23 +111,16 @@ import axios from 'axios';
 import foter from './footer.vue'
 
 import _ from 'lodash';
-import { saveRegistry, upodateRegistry, getProveedor, updateRegistry, SwalFireAlert } from './peticiones/http'
+import { saveRegistry, getProveedor, updateRegistry, SwalFireAlert } from './peticiones/http'
 
 console.log("evento form ",);
 
 export default{
-
-
     
     name: "Form",
-    
-    
     components: {
         foter,
     },
-   
-    
-
     
     data(){
         return{
@@ -144,22 +138,16 @@ export default{
                 "peso": null,
                 "tipoTela": '',
                 "color": ''
-            
-           
             },
             modoEdicion: false,
             registroUpdate: {},
             proveedor: [],
-            
-           
 
         }
         
     },
 
     methods:{
-        
-      
         
         submitform(){
           
