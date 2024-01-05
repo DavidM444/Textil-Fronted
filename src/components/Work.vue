@@ -11,11 +11,11 @@
             <div class="col-sm-4 align-self-center text-center d-none d-sm-block">
             
                 <div class="user">
-                    <p>Usuario</p>
-                    <p> {{ username }}</p>
+                    <h3 class="fs-6">Usuario</h3>
+                    <p class="fs-5"> {{ username }}</p>
                 </div>
                 <div>
-                    <button v-on:click="logOut">Salir</button>
+                    <button class="btn btn-warning" v-on:click="logOut">Salir</button>
                 </div>
             </div>
         </div>
@@ -45,8 +45,7 @@
                 <div class="align-self-center  card ">
                     <div class="card-body d-flex">
 
-                        <p >Nuestro compromiso con la calidad en la producción textil se refleja en cada
-                            prenda</p>
+                        <p>Nuestro compromiso con la calidad en la producción textil se refleja en cada prenda</p>
 
                     </div>
                 </div>
@@ -64,30 +63,30 @@
                 </div>
             </div>
         </section>        
-        <section class="row d-flex footer">
+        <section class="row footer text-line ">
             
-            <div class="row card-text">
-                <h3>Registro Textil</h3>
-                <p>
+            <div class=" col-md-6 offset-md-3">
+                <h3 class="fs-2 p-4">Registro Textil</h3>
+                <p class="fs-6">
                     Los registros de calidad textil son una herramienta fundamental para garantizar la satisfacción del
                     cliente y el éxito de la empresa. Estos registros permiten evaluar y registrar los aspectos más
                     importantes de la calidad de la tela, como la resistencia, la uniformidad, la textura, el color,
                     entre otros. 
                 </p>
-                <p >
+                <p class="fs-6">
                     El proceso de registro de calidad textil comienza desde la selección de la materia prima, asegurando
                     que cumpla con los estándares requeridos para el producto final. Luego, se realizan pruebas y
                     evaluaciones a lo largo del proceso de producción para detectar y corregir posibles defectos o
                     problemas en la calidad de la tela. Estas pruebas incluyen la medición de la resistencia, la
                     uniformidad del tejido, la textura, la alineación de la puntada, entre otras. 
                 </p> 
-                <p> 
+                <p class="fs-6"> 
                     Una vez que la tela ha sido producida, se realiza una evaluación final para asegurarse de que cumple
                     con los requisitos de calidad establecidos. Si se encuentran defectos o problemas, se realizan las
                     correcciones necesarias antes de que la tela sea enviada al cliente.
 
                 </p>
-                <p>
+                <p class="fs-6">
                     Los registros de calidad textil permiten a la empresa tener un control riguroso sobre el proceso de
                     producción, detectar y corregir problemas de calidad de manera temprana, y garantizar que el
                     producto final cumpla con los requisitos y expectativas del cliente. Además, estos registros pueden
@@ -104,7 +103,7 @@
 
 
         </section>
-       
+     
 
 
     </div>
@@ -171,6 +170,7 @@ export default {
 $green-darks: #F2A51A;
 $green-dark: #f2f7f5;
 $bg: #00473e;
+$red: #D21312;
 
 
 .head{
@@ -189,28 +189,38 @@ $bg: #00473e;
     }
 
 }
+.user{
+    h3{
+        color: $bg;
+    };
+    p{
+        color: $green-darks;
+    }
+}
 
-
-.btn{
+.btn-primary{
     background-color: #00473e;
     border-color: #00473e;
 }
-.btn:hover{
+.btn-primary:hover{
     background-color: #F2A51A;
     border-color: #F2A51A;
+}
+.btn-warning:hover{
+    color: #f2f7f5;
+    background-color: $red;
+    border-color: $red;
 }
 
 
 
 .rot {
-
     img {
         box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.48);
         max-width: 100%;
 
     }
 }
-
 .imagenes {
     padding: 2%;
     background-color: $green-dark;
@@ -236,27 +246,19 @@ p{    color: #4A4A4A;
     }
 .footer {
     background-color:$bg;
-    
- 
-    img{
-        width: 70%;
-        height: 60%;
-        margin: auto;
-    }
     h3{
-        text-align: center;
-        padding: 2rem;
-        color: $green-dark;
-        font-size: 2rem;
-        font-weight: 500;
+        color: $green-darks;
     }
+
+    img{
+        width: 50%;
+        height: 50%;
+        margin: auto;
+        padding: 3%;
+    }
+
     p{
         color: $green-dark;
-        padding: 0 5rem;
-    }
-    .imgf{
-        margin: 3rem 0;
-
     }
     
 }</style>
