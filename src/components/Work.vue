@@ -5,11 +5,10 @@
             <div class="col-sm-8 d-flex ">
                 <div class="d-flex logo">
                     <img class="img-fluid" src="../assets/img/T.png" alt="">
-                    <h1 class="align-self-center">Quality Tex</h1>
+                    <h1 class="align-self-center text-center">Quality Tex</h1>
                 </div>
             </div>
             <div class="col-sm-4 align-self-center text-center d-none d-sm-block">
-            
                 <div class="user">
                     <h3 class="fs-6">Usuario</h3>
                     <p class="fs-5"> {{ username }}</p>
@@ -44,13 +43,12 @@
             <div class="d-sm-flex justify-content-center rot">
                 <div class="align-self-center  card ">
                     <div class="card-body d-flex">
-
                         <p>Nuestro compromiso con la calidad en la producción textil se refleja en cada prenda</p>
 
                     </div>
                 </div>
                 <div class=" d-flex align-self-center">
-                    <img src="../assets/img/knit-g6e83076f5_640.jpg" alt="Imagen" id="slide">
+                    <img src="../assets/img/knit-g6e83076f5_640-min.jpg" alt="Imagen" id="slide">
                 </div>
 
 
@@ -64,7 +62,6 @@
             </div>
         </section>        
         <section class="row footer text-line ">
-            
             <div class=" col-md-6 offset-md-3">
                 <h3 class="fs-2 p-4">Registro Textil</h3>
                 <p class="fs-6">
@@ -80,20 +77,16 @@
                     problemas en la calidad de la tela. Estas pruebas incluyen la medición de la resistencia, la
                     uniformidad del tejido, la textura, la alineación de la puntada, entre otras. 
                 </p> 
-                <p class="fs-6"> 
-                    Una vez que la tela ha sido producida, se realiza una evaluación final para asegurarse de que cumple
+                <p class="fs-6"> Una vez que la tela ha sido producida, se realiza una evaluación final para asegurarse de que cumple
                     con los requisitos de calidad establecidos. Si se encuentran defectos o problemas, se realizan las
-                    correcciones necesarias antes de que la tela sea enviada al cliente.
-
-                </p>
+                    correcciones necesarias antes de que la tela sea enviada al cliente.</p>
                 <p class="fs-6">
                     Los registros de calidad textil permiten a la empresa tener un control riguroso sobre el proceso de
                     producción, detectar y corregir problemas de calidad de manera temprana, y garantizar que el
                     producto final cumpla con los requisitos y expectativas del cliente. Además, estos registros pueden
                     ser utilizados para hacer mejoras en el proceso de producción y en la calidad del producto a largo
                     plazo, lo que puede resultar en una mayor satisfacción del cliente y un aumento de la rentabilidad
-                    de la empresa. En resumen, los registros de calidad textil son esenciales para asegurar la calidad y
-                    el éxito de la empresa en el mercado textil.
+                    de la empresa.
                 </p>
 
             </div>
