@@ -127,6 +127,7 @@ body{
 
 <script>
 import foot from './footer.vue'
+import Swal from 'sweetalert2'
 
 import axios from 'axios';
 
@@ -168,9 +169,14 @@ export default {
         })
         .catch((error) => {
           console.log("error en la peticion, error ", error);
-        
+          Swal.fire(({
+            title: "Sesion Vencida",
+            text: "Vuelve a iniciar sesion.",
+            timer: 4000
+
+          }))
             alert("ERROR 401: Credenciales Incorrectas.");
-        });
+        });g
     },
     redirect(linkpage){
       window.location.href= linkpage;
