@@ -30,10 +30,7 @@
                     <label for="contraseña" class="form-label">Contraseña</label>
                     <input v-model="user.clave" type="password" class="form-control" required name="contraseña" id="contraseña">
 
-
-
-
-                    <button type="submit" class="btnr btn btn-primary mt-3">Registrar</button>
+                    <button type="submit" class="btn btn btn-primary mt-3">Registrar</button>
 
                 </form>
 
@@ -47,6 +44,7 @@
 <script>
 import foot from './footer.vue'
 import axios from 'axios'
+import { SwalFireAlert } from './peticiones/http'
 export default {
     name: "Singup",
     components: {
@@ -71,14 +69,22 @@ export default {
                 { headers: {} }
             )
                 .then((result) => {
+                    console.log("res " ,result.data)
+                    let { nombre:userName, apellido: userLastName } = result.data;
+                    SwalFireAlert('success',`Usuario registrado: ${userName} ${userLastName} `, "Inicie Sesion","Ok")
+                    this.$router.push("Login");
+                    /*
+
+                    //Autentication Automatic
                     let dataSignUp = {
-                        nombre: this.user.username,
+                        name: this.user.nombre,
                         apellido: this.user.apellido,
                         email: this.user.email,
-                        clave: result.user.jwtToken,
+                        token_access: result.data.clave,
                 
                     }
                     this.$emit('completedSignUp', dataSignUp)
+                    */
                 })
                 .catch((error) => {
                     console.log(error)
