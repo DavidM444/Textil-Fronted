@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { head } from 'lodash';
 import Swal from 'sweetalert2'
 
-export function getProveedor(){
-    return axios.get('http://localhost:8081/proveedor'); 
+export function getProveedor(hdr){
+    return axios.get('http://localhost:8081/proveedor',hdr); 
 };
 
 export function saveRegistry (dataRegistry,headers){
@@ -16,7 +15,7 @@ export function updateRegistry(dataUpdate,headers){
         .put('http://localhost:8081/registro', dataUpdate, headers)
         
 }
-export function deletePeticion(idDel){
+export function deletePeticion(idDel, head){
     return axios.delete(`http://localhost:8081/registro/${idDel}`, head)
 
 }
@@ -26,6 +25,11 @@ export function getRegistros(headers){
 }
 export function getDatosGraphic(headers){
     return axios.get("http://localhost:8081/registro/datos",headers);
+}
+
+//traer datos de ususarios para el admin
+export function getAllUsers(headers){
+    return axios.post("http://localhost:8081/registro", headers);
 }
 
 export function SwalFireAlert(icono, titulo, texto, boton){

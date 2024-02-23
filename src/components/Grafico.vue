@@ -4,7 +4,7 @@
   </div>
   
   <div>
-    <div class="row mt-3">
+    <div class="row pt-3">
       <div class="col-md-6 offset-md-3">
         <div class="card border border-dark">
           <div class="card-header bg-dark"></div>
@@ -15,7 +15,8 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid mt-3">
+  <section class="bart">
+    <div class="container-fluid pt-3">
     <div class="col-md-6 offset-md-3">
       <p class="text-center">La Escala de Grises para la Transferencia de Color se utiliza para evaluar visualmente la
         transferencia de color o manchado debido a pruebas de solidez del color.</p>
@@ -28,7 +29,7 @@
       <Doughnut v-if="loaded" :data="doughnutData" :options="chartOptions" />
     </div>
   </div>
-  <div class="col mt-4">
+  <div class="container-fluid mt-4 ">
     <div class="col-md-6 offset-md-3">
       <p>La prueba de pilling en tela tiene como objetivo evaluar la resistencia de un tejido a la formación de bolitas o
         "pills".
@@ -40,21 +41,27 @@
       <p>La prueba de pilling es importante en la industria textil para evaluar la durabilidad y la calidad
         percibida de un tejido.</p>
     </div>
+   
 
 
   </div>
+  </section>
+  
+   <Foot/>
 </template>
 <script>
 
-const token = localStorage.getItem('token_access');
+
 import { getDatosGraphic } from './peticiones/http'
 
 import { Bar, Doughnut } from 'vue-chartjs'
 import { Chart as ChartJS, Title, ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 ChartJS.register(Title, ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+
+import Foot from "./footer.vue"
 export default {
   name: 'BarChart',
-  components: { Bar, Doughnut },
+  components: { Bar, Doughnut, Foot },
   props: {
     chartId: {
       type: String,
@@ -71,6 +78,7 @@ export default {
 
   }),
   async mounted() {
+    const token = localStorage.getItem('token_access');
     this.loaded = false
 
     const head = {
@@ -120,9 +128,10 @@ export default {
 
 $green: #00473e;
   .title{
-    color: $green;
+    color: whitesmoke;
   }
   .head{
-    background-color: #F0EB8D;
+    background-color: $green;
   }
+  
 </style>

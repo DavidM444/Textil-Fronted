@@ -13,12 +13,12 @@
 
                         <div class="form-group">
                             <label for="peso">Peso</label>
-                            <input v-model="formData.peso" type="number" step="0.001" id="peso" name="peso" required>
+                            <input v-model="formData.peso" type="number" step="0.001" id="peso" name="peso" placeholder="Kg" required>
                         </div>
 
                         <div class="form-group">
                             <label for="valoracion">Valoracion Grises</label>
-                            <input v-model="formData.valoracion" type="text" id="valoracion" name="valoracion" min="0" max="15" required>
+                            <input v-model="formData.valoracion" type="text" id="valoracion" name="valoracion" min="0" max="15" placeholder="Rango > 0" required>
                         </div>
                         
                         <div class="form-group">
@@ -40,8 +40,8 @@
                       
                         <div class="form-group">
                             <label for="absorcion">Absorción Pilling:</label>
-                            <input v-model="formData.cantidad" id="cantidad" name="cantidad" placeholder="cantidad" required>
-                            <input v-model="formData.tiempo"  id="tiempo" name="tiempo" placeholder="tiempo" required>
+                            <input v-model="formData.cantidad" id="cantidad" name="cantidad" placeholder="Cantidad(g)" required>
+                            <input v-model="formData.tiempo"  id="tiempo" name="tiempo" placeholder="Tiempo(s)" required>
                             <select name="rango" id="rango" v-model="formData.rango">
                                 <option value="1">Cambio Severo</option>
                                 <option value="2">Cambio Considerable</option>
@@ -178,7 +178,7 @@ export default{
                     "color": this.formData.color
                 }
             };
-            let token = localStorage.getItem("token_access");
+            const token = localStorage.getItem("token_access");
             const head = {
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -207,18 +207,19 @@ export default{
                 };
 
 
-            function Actualizar(id){
+            function Actualizar(id,cal){
+                console.log("dto  sdd " +datotoSend )
+       
                 
-               let dataUpdate = {...datotoSend,id};
-               let calificacion = dataUpdate.escalagrises.valoracion;
-               
-               dataUpdate = {...dataUpdate,escalagrises: {...dataUpdate.escalagrises,calificacion}};
-               delete dataUpdate.escalagrises.valoracion;
-               console.log("id", id, " datoooo ", dataUpdate);
+               let dataUpdate = { ...datotoSend, id };
+                let calificacion = cal;
 
+                dataUpdate = { ...dataUpdate, escalagrises: { ...dataUpdate.escalagrises, calificacion } };
+                delete dataUpdate.escalagrises.valoracion;
+                console.log("id", id, " datoooo ", dataUpdate)
 
-               //upodateRegistry
-               updateRegistry(dataUpdate,head).then((response) => {
+            //upodateRegistry
+                updateRegistry(dataUpdate, head).then((response) => {
 
                       
                         SwalFireAlert('success', '¡Actualización exitosa!', 'El registro se ha actualizado satisfactoriamente.', 'OK',
@@ -229,10 +230,9 @@ export default{
                             SwalFireAlert('error', '¡Actualización fallida!', 'La actualización no se ha completado.', 'Cool',
                             );
                         });
-
-                };
+                    };
         
-            this.modoEdicion? Actualizar(this.registroUpdate.reId): Guardar();
+            this.modoEdicion? Actualizar(this.registroUpdate.id, this.registroUpdate.escalagrises.calificacion): Guardar();
             console.log("ffinal");
         },
     },
@@ -250,6 +250,7 @@ export default{
 
             const registro2 = JSON.parse(reg);
             this.registroUpdate = registro2;
+            console.log("<----> ",this.registroUpdate)
             const datafinal = Convert(registro2);
             console.log("datafinal antes dde agerefar: ", datafinal, " lll", this.registroUpdate)
 
@@ -262,7 +263,15 @@ export default{
 
         }
         //http js
-        getProveedor().then((result) => {
+
+        const token = localStorage.getItem("token_access");
+            const head = {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            }
+        getProveedor(head).then((result) => {
             this.proveedor = result.data;
             console.log("data proveedor ",this.proveedor)
         }).catch((error) => {
@@ -275,6 +284,7 @@ export default{
         function Convert(obj) {
             console.log("data antes", obj)
             let dat = {
+                "id": obj.id,
                 "fecha": obj.fecha,
                 "proveedor": obj.proveedor,
 
@@ -293,8 +303,6 @@ export default{
                 "peso": obj.especificaciones.peso,
                 "tipoTela": obj.especificaciones.tipoTela,
                 "color": obj.especificaciones.color
-
-
             }
             console.log("dat", dat)
             return dat;

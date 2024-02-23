@@ -1,18 +1,21 @@
 <template>
-    <div class="container-fluid">
-        <div class="row head">
-                <div class="col-sm-8 text-md-left d-flex logo ">
-                    <img src="../assets/img/T.png" alt="">
-                    <h1 class="align-self-center text-md">QualityTex</h1>
+    <div>
+        <header class="container-fluid head ">
+            <div class="row">
+                 <div class="col-sm-8 text-md-left d-flex logo">
+                    <img src="../assets/img/T.png" alt="logo">
+                    <h1 class="align-self-center text-md">Quality Tex</h1>
                 </div>
 
-                <div class="col-sm-4 text-center align-self-center mt-sm-0 mt-3 mb-sm-0 mb-3">
-                    <RouterLink class="btn btn-primary link" to="/login">Iniciar Sesion</RouterLink>
-                    <RouterLink class="btn btn-success link" to="/singup">Registrarse</RouterLink>
-                </div>    
+                <div class="col-sm-4 text-center align-self-center bg-warning">
+                    <RouterLink class="btn btn-primary link " to="/login">Iniciar Sesion</RouterLink>
+                    <RouterLink class="btn btn-success link " to="/singup">Registrarse</RouterLink>
+                </div>  
+            </div>
+                 
 
-        </div>
-        <div class="row info">
+        </header>
+        <section class="info container-fluid">
             <div class="est">
                 <h2>Estándares de calidad textil</h2>
                 <p>Los estándares de calidad en la industria textil son criterios fundamentales para garantizar la
@@ -47,7 +50,7 @@
                     desde la moda hasta la medicina y la ingeniería. A continuación, veremos algunas de las principales
                     innovaciones que están transformando el mundo de los textiles. <br>
                 <ul>
-                    <li><strong>Textiles tecnicos</strong>
+                    <li><h3>Textiles técnicos</h3>
                         <p>
                             los textiles técnicos han sido una de las mayores innovaciones en la industria. Estos
                 materiales se diseñan específicamente para satisfacer necesidades técnicas y funcionales. Por ejemplo,
@@ -58,7 +61,7 @@
                         </p>
                     </li>
                     <li>
-                        <strong>Implementacion de tecnologia</strong>
+                        <h3>Implementación de tecnología</h3>
                 <p>Otra innovación emocionante es el desarrollo de textiles inteligentes, que incorporan electrónica y
                 sensores
                 para proporcionar funcionalidades avanzadas. Los textiles inteligentes pueden monitorear signos vitales
@@ -68,7 +71,7 @@
                 para aplicaciones de moda.</p>
                     </li>
                     <li>
-                        <strong>Sostenibilidad textil</strong>
+                        <h3>Sostenibilidad textil</h3>
                 <p>La sostenibilidad también ha sido un foco importante de innovación en textiles. El desarrollo de fibras
                 y
                 tejidos a partir de materiales reciclados o de fuentes renovables ha ganado popularidad. Estos textiles
@@ -76,7 +79,7 @@
                     </li>
                     <li>
                         
-                <strong>Impresion textil</strong>
+                <h3>Impresión textil</h3>
                 <p>Además, las tecnologías de impresión textil han avanzado significativamente. La impresión digital
                 permite
                 estampar diseños complejos y personalizados sobre tejidos de manera más eficiente, lo que ha impulsado
@@ -86,7 +89,7 @@
 
                     <li>
                         
-                <strong>Textiles biomedicos</strong>
+                <h3>Textiles biomédicos</h3>
                 <p>En el ámbito médico, los textiles biomédicos son otra innovación destacada. Estos textiles se utilizan
                 en
                 aplicaciones médicas, como vendajes avanzados que ayudan en la cicatrización de heridas o textiles que
@@ -95,7 +98,7 @@
                     </li>
                     <li>
                         
-                <strong>nanotecnología</strong>
+                <h3>Nanotecnología</h3>
 
                 <p>La nanotecnología ha abierto un mundo de posibilidades en la mejora de las propiedades de los
                 textiles. Con nanofibras y nanorecubrimientos, los textiles pueden obtener características
@@ -106,8 +109,10 @@
 
                 </p>
             </div>
-            <div class="est2 ">
-                <div class="col-md-10 offset-md-1">
+        </section>
+        <section class="est2 ">
+            <div class="container-fluid">
+                <div class="">
                     <h2 class="">Calidad de confección</h2>
                      <p>
                     La calidad de confección en la industria textil es un aspecto fundamental para garantizar la
@@ -154,10 +159,7 @@
                 </div>
                
             </div>
-
-        </div>
-
-
+        </section>
 
 
     </div>
@@ -187,7 +189,8 @@
 $tex-w: #f2f7f5;
 $bgcolor: #00473e;
 $nar: #faae2b;
-$succes: #198754;
+$succes: #3f7354;
+$title: #75d28f;
 
 .info{
     background-color: $tex-w;
@@ -198,8 +201,14 @@ $succes: #198754;
     padding: 1% 5%;
     h2{
         color: $bgcolor;
+        
     }
     strong{
+        color: $succes;
+    }
+    h3{
+        font-weight: 550;
+        font-size: 1rem;
         color: $succes;
     }
    
@@ -212,19 +221,19 @@ $succes: #198754;
     padding: 1% 5%;
     
     h2{
-        color: $succes;
+        color: $title;
     }
-}
-.est2 p{
-    color: #f2f7f5;
+    p{
+        color: #f2f7f5;
     font-size: smaller;
-    
+    }
 }
 .head{
     background-color: #00473e;
 }
 .link{
-    margin-right: 1rem;
+  
+    margin: 1ch;
 }
 
 
@@ -236,13 +245,13 @@ $succes: #198754;
     max-width: 8em;
     height: auto;
     border-radius: 20%;
-    padding: 0.5rem;
+    padding: 1rem;
     
 
 }
 
 .logo h1 {
-    color: $succes;
+    color: $title;
     margin: auto;
 }
 </style>

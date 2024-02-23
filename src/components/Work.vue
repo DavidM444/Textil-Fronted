@@ -4,7 +4,7 @@
         <div class="row head">
             <div class="col-sm-8 d-flex ">
                 <div class="d-flex logo">
-                    <img class="img-fluid" src="../assets/img/T.png" alt="">
+                    <img class="img-fluid" src="../assets/img/T.png">
                     <h1 class="align-self-center text-center">Quality Tex</h1>
                 </div>
             </div>
@@ -93,10 +93,7 @@
             <div class="d-flex align-self-center imgf">
                 <img src="../assets/img/pexels-jeshootscom-530024.jpg" class="img-fluid" alt="...">
             </div>
-
-
         </section>
-     
 
 
     </div>
@@ -105,33 +102,29 @@
 <script>
 
 import { jwtDecode } from "jwt-decode";
+import { SwalFireAlert } from './peticiones/http'
 export default {
     name: "Work",
     data: function(){
         return{
-            username: localStorage.getItem('name')||"none",
+            username: localStorage.getItem('name'),
             expToken: null,
             token: `${localStorage.getItem('token_access')}`
         }
-        
     },
     methods: {
         logOut: function(){
-            alert("La sesion ha cerrado");
+            SwalFireAlert('warning',"Sesion Cerrada","Su acceso ha sido cerrado.","Ok")
             this.$emit("logOut");
-            console.log("se emitio logout")
         },
         decodeToken: function(){
             try {
-               
                 let exp = jwtDecode(this.token);
                 this.expToken = exp.exp;
-               //console.log('token_ , ',this.token, ' exp: ', exp, ' exp2. ', exp.exp )
                 this.expValue();
                 
             } catch (error) {
                 alert("No hay credenciales. Ingrese nuevamente");
-                console.log(this.token," -- ", this.expToken)
                 this.$emit('logOut');
             }
             
@@ -146,11 +139,8 @@ export default {
             }
 
         }
-
-
     },
     mounted(){
-        console.log('mounted decode')
         this.decodeToken();
     }
 
