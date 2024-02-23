@@ -12,7 +12,7 @@
             <div class="card login">
               <h2 class="text-center">Iniciar Sesión</h2>
               <div class="d-flex  justify-content-center align-items-center">
-                <img class="m-3 m1 " src="../assets/img/facebook.png" alt="Card image cap"   @click="redirect('https://www.facebook.com/login')">
+                <img class="m-3 m1 " src="../assets/img/facebook.png" alt="Card image cap">
                 <img class="m-3 m1" src="../assets/img/google.png" alt="Card image cap">
                 <img class="m-3" src="../assets/img/icons8-apple-logo-64.png" alt="Card image cap">
               </div>
@@ -130,6 +130,7 @@ import foot from './footer.vue'
 import Swal from 'sweetalert2'
 
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 
 
 export default {
@@ -144,6 +145,7 @@ export default {
  
   },
   methods: {
+    
     loginUserProcess: function () {
       const user = {
         email: this.user.username,
@@ -156,11 +158,17 @@ export default {
       )
         .then((result) => {
           console.log(result);
+          const iss = this.RoleUser(result.data.clave)
+          console.log("issuer ", iss)
           let dataLogIn = {
             username: this.user.username,
-            token_access: result.data.token,
-            name: result.data.nombre
+            token_access: result.data.clave,
+            name: result.data.nombre,
+            role_user: false
           };
+          if(iss==="qualityAdmin"){
+            dataLogIn.role_user=true;
+          }
 
           
           console.log("data: ", dataLogIn)
@@ -175,13 +183,15 @@ export default {
             timer: 4000
 
           }))
-            alert("ERROR 401: Credenciales Incorrectas.");
-        });g
+       
+        });
     },
-    redirect(linkpage){
-      window.location.href= linkpage;
+    RoleUser(token){
+      var token_decode = jwtDecode(token);
+      return token_decode.iss;
     }
   },
+  
   components: {
     foot,
   }
