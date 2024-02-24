@@ -1,10 +1,13 @@
 <template>
   <div class="head">
-    <h2 class="text-center p-2 title">Gráfico De Registros</h2>
+    <h2 class="text-center py-3 title">Datos Textiles</h2>
   </div>
   
   <div>
-    <div class="row pt-3">
+    <div>
+      <h2 class="subtitle text-center">Gráfico Escala De Grises</h2>
+    </div>
+    <div class="row pt-1">
       <div class="col-md-6 offset-md-3">
         <div class="card border border-dark">
           <div class="card-header bg-dark"></div>
@@ -23,7 +26,7 @@
     </div>
   </div>
   <div class="container-fluid col text-center">
-    <h2>Grafico Nivel de Pilling</h2>
+    <h2 class="subtitle">Gráfico Nivel de Pilling</h2>
 
     <div class="col-md-6 offset-md-3">
       <Doughnut v-if="loaded" :data="doughnutData" :options="chartOptions" />
@@ -101,7 +104,7 @@ export default {
       this.chartData = {
         labels: this.etiquetas,
         datasets: [
-          { labels: 'Registros', data: this.valores, backgroundColor: ['#4F6F52', '#80BCBD', '#F3B664', '#FFB534', '#65451F'] }
+          {  label: 'Valoracion',data: this.valores, backgroundColor: ['#4F6F52', '#80BCBD', '#F3B664', '#FFB534'] }
         ]
       }
 
@@ -126,9 +129,15 @@ export default {
 
 <style lang="scss" scoped>
 
-$green: #00473e;
+$green: #065147;
   .title{
     color: whitesmoke;
+  }
+  .subtitle{
+    color: $green;
+    padding-top: 1rem;
+    font-size: 1.5em;
+    
   }
   .head{
     background-color: $green;

@@ -4,12 +4,12 @@
             <div class="row">
                  <div class="col-sm-8 text-md-left d-flex logo">
                     <img src="../assets/img/T.png" alt="logo">
-                    <h1 class="align-self-center text-md">Quality Tex</h1>
+                    <h1 class="align-self-center">Quality Tex</h1>
                 </div>
 
-                <div class="col-sm-4 text-center align-self-center bg-warning">
-                    <RouterLink class="btn btn-primary link " to="/login">Iniciar Sesion</RouterLink>
-                    <RouterLink class="btn btn-success link " to="/singup">Registrarse</RouterLink>
+                <div class="col-sm-4 text-center align-self-center">
+                    <RouterLink class="btn btn-primary link" to="/login">Iniciar Sesion</RouterLink>
+                    <RouterLink class="btn btn-success link" to="/singup">Registrarse</RouterLink>
                 </div>  
             </div>
                  
@@ -113,7 +113,7 @@
         <section class="est2 ">
             <div class="container-fluid">
                 <div class="">
-                    <h2 class="">Calidad de confección</h2>
+                    <h2 class="p-4">Calidad de confección</h2>
                      <p>
                     La calidad de confección en la industria textil es un aspecto fundamental para garantizar la
                     satisfacción del
@@ -243,16 +243,20 @@ $title: #75d28f;
 
 .logo img {
     max-width: 8em;
-    height: auto;
+    height: 100%;
     border-radius: 20%;
     padding: 1rem;
+    
     
 
 }
 
 .logo h1 {
     color: $title;
-    margin: auto;
+    text-align: center;
+    font-size: 3rem;
+
+
 }
 </style>
 <script>

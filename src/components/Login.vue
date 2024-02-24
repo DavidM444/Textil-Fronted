@@ -5,7 +5,7 @@
         <div class="container-fluid pt-3">
           <div class="d-flex logo">
             <img class="img-fluid mx-3" src="../assets/img/T.png" alt="">
-            <h1 class="mt-2 text-center">Quality Tex</h1>
+            <h1 class="text-center">Quality Tex</h1>
           </div>
 
           <div class="pt-3">
@@ -70,13 +70,13 @@ body{
 
 .logo img {
   max-width: 100px;
-  height: auto;
+  height: 100%;
   border-radius: 20%;
 }
 
 .logo h1 {
-
-  font-size: 3rem;
+  align-self: center;
+  font-size: 3em;
   font-weight: 600;
   color: #00473e
 }
@@ -88,6 +88,7 @@ body{
 
 .login h2 {
   color: #00473e;
+
 
 }
 

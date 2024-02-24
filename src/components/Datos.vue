@@ -1,7 +1,7 @@
 <template>
     <div class="cont">
        <section>
-          <h2 class="text-center text-bg-success fs-2 font-verdana p-2">Tabla de registros</h2>
+          <h2 class="text-center fs-2 font-verdana py-3 title">Tabla de registros</h2>
         </section>
       <div class="table-responsive container">
         <table class="table align-middle table-striped table-hover table-success">
@@ -41,7 +41,7 @@
       <!-- Modal para detalles -->
       
       <div v-if="mostrarModal" class="modal">
-        <div class="modal-content bg-success">
+        <div class="modal-content">
           <span class="cerrar p-2 text-warning" @click="cerrarModal">&times;</span>
           <h3>Dimensiones</h3>
           <p><strong>Alto</strong> {{ detalle.altura }} metros.  <strong>Ancho</strong> {{ detalle.ancho }} metros.</p>
@@ -164,8 +164,15 @@
   };
   </script>
   
-  <style scoped>
+  <style lang="scss" scoped>
   /* Agrega estilos específicos del componente aquí */
+
+  $green-dark: #00473e;
+  $green: #3f7354;
+  $modal-back: #F1EAFF;
+  .title{
+    color: $green-dark;
+  }
 
   .modal {
   display: block;
@@ -179,11 +186,11 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 .modal h3{
-  color: rgb(111 233 132);
+  color: $green;
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: $modal-back;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
@@ -204,13 +211,13 @@
   text-decoration: none;
   cursor: pointer;
 }
-@media (max-width: 700px) {
-  .cont{
-    background-color: black;
-    
+@media (max-width: 550px) {
+  table{
+    background-color: burlywood;
   }
+  
   table, .btn{
-    font-size: 13px;
+    font-size: 9px;
     
   }
 }

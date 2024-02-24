@@ -1,25 +1,25 @@
 <template >
-    <div onload="interval()" class="container-fluid">
+    <div onload="interval()">
 
-        <div class="row head">
-            <div class="col-sm-8 d-flex ">
+        <div class="d-flex head col">
+            <div class="col-sm-8">
                 <div class="d-flex logo">
                     <img class="img-fluid" src="../assets/img/T.png">
                     <h1 class="align-self-center text-center">Quality Tex</h1>
                 </div>
-            </div>
-            <div class="col-sm-4 align-self-center text-center d-none d-sm-block">
+            </div> 
+            <div class="align-self-center text-center d-none d-sm-block col-sm-4">
                 <div class="user">
-                    <h3 class="fs-6">Usuario</h3>
-                    <p class="fs-5"> {{ username }}</p>
+                    <h3>Usuario</h3>
+                    <p> {{ username }}</p>
                 </div>
                 <div>
-                    <button class="btn btn-warning" v-on:click="logOut">Salir</button>
+                    <button class="btn btlog" v-on:click="logOut">Salir</button>
                 </div>
             </div>
         </div>
 
-        <section class="row oper">
+        <section class="oper">
             <div class="d-flex text-center flex-column flex-sm-row justify-content-center">
                 
                 <div class="p-1">
@@ -39,7 +39,7 @@
            
         </section>
 
-        <section class="row  imagenes">
+        <section class="imagenes">
             <div class="d-sm-flex justify-content-center rot">
                 <div class="align-self-center  card ">
                     <div class="card-body d-flex">
@@ -61,26 +61,30 @@
                 </div>
             </div>
         </section>        
-        <section class="row footer text-line ">
-            <div class=" col-md-6 offset-md-3">
-                <h3 class="fs-2 p-4">Registro Textil</h3>
-                <p class="fs-6">
+        <section class="footer">
+            <div class="container">
+                <h3 class="py-3">Registro Textil</h3>
+                <p>
                     Los registros de calidad textil son una herramienta fundamental para garantizar la satisfacción del
                     cliente y el éxito de la empresa. Estos registros permiten evaluar y registrar los aspectos más
                     importantes de la calidad de la tela, como la resistencia, la uniformidad, la textura, el color,
                     entre otros. 
                 </p>
-                <p class="fs-6">
+                <p>
                     El proceso de registro de calidad textil comienza desde la selección de la materia prima, asegurando
                     que cumpla con los estándares requeridos para el producto final. Luego, se realizan pruebas y
                     evaluaciones a lo largo del proceso de producción para detectar y corregir posibles defectos o
                     problemas en la calidad de la tela. Estas pruebas incluyen la medición de la resistencia, la
                     uniformidad del tejido, la textura, la alineación de la puntada, entre otras. 
                 </p> 
-                <p class="fs-6"> Una vez que la tela ha sido producida, se realiza una evaluación final para asegurarse de que cumple
+                <p> Una vez que la tela ha sido producida, se realiza una evaluación final para asegurarse de que cumple
                     con los requisitos de calidad establecidos. Si se encuentran defectos o problemas, se realizan las
-                    correcciones necesarias antes de que la tela sea enviada al cliente.</p>
-                <p class="fs-6">
+                    correcciones necesarias antes de que la tela sea enviada al cliente.
+                </p>
+                <div class="d-flex align-self-center imgf">
+                    <img src="../assets/img/pexels-jeshootscom-530024.jpg" class="img-fluid" alt="...">
+                </div>
+                <p class="pb-5">
                     Los registros de calidad textil permiten a la empresa tener un control riguroso sobre el proceso de
                     producción, detectar y corregir problemas de calidad de manera temprana, y garantizar que el
                     producto final cumpla con los requisitos y expectativas del cliente. Además, estos registros pueden
@@ -90,9 +94,7 @@
                 </p>
 
             </div>
-            <div class="d-flex align-self-center imgf">
-                <img src="../assets/img/pexels-jeshootscom-530024.jpg" class="img-fluid" alt="...">
-            </div>
+            
         </section>
 
 
@@ -150,10 +152,10 @@ export default {
 
 
 <style lang="scss" scoped>
-$green-darks: #F2A51A;
+$green-darks: #7fae7d;
 $green-dark: #f2f7f5;
 $bg: #00473e;
-$red: #D21312;
+$red: #7fe17b;
 
 
 .head{
@@ -163,6 +165,7 @@ $red: #D21312;
     img {
         max-width: 8rem;
         padding: 0.5rem;
+        margin-left: 2rem;
         border-radius: 20%;
     }
     h1{
@@ -179,18 +182,22 @@ $red: #D21312;
     p{
         color: $green-darks;
     }
+   
 }
+.btlog{
+        background-color:$green-darks;
+        color: $green-dark
+    }
 
 .btn-primary{
     background-color: #00473e;
     border-color: #00473e;
 }
 .btn-primary:hover{
-    background-color: #F2A51A;
-    border-color: #F2A51A;
+    background-color: $green-darks;
+    border-color: $green-darks;
 }
-.btn-warning:hover{
-    color: #f2f7f5;
+.btlog:hover{
     background-color: $red;
     border-color: $red;
 }
@@ -234,10 +241,11 @@ p{    color: #4A4A4A;
     }
 
     img{
-        width: 50%;
-        height: 50%;
+  
+        max-width: 60%;
         margin: auto;
-        padding: 3%;
+        padding: 2rem;
+        border-radius: 70px;
     }
 
     p{

@@ -7,8 +7,8 @@
             <div class="row">
                 <div class="container-fluid pt-3">
                     <div class="d-flex logo">
-                        <img class="img-fluid mx-3" src="../assets/img/T.png" alt="">
-                        <h1 class="mt-2 text-center">Quality Tex</h1>
+                        <img class="p-1" src="../assets/img/T.png" alt="">
+                        <h1 class="p-3 text-center">Quality Tex</h1>
                     </div>
                 </div>
             </div>

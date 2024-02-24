@@ -93,17 +93,15 @@
                         </div>
 
                     </div>
-                    <div class="form-group text-center">
-                       
+                    <div class="form-group text-end">
                         <button type="submit" class="btn btn-primary">{{ modoEdicion ? 'Actualizar' : 'Guardar' }}</button>
-                        <button @click.prevent="clear" class="btn btn-danger close-popup">Cerrar</button>
                     </div>
 
                 </form>
                 
             </div>
-            <foter></foter>        
-        </div>
+                   
+        </div><foter></foter> 
 </template>
 
 <script>
@@ -237,9 +235,7 @@ export default{
         },
     },
 
-    clear() {
-        this.$router.push({ name: 'work' })
-    },
+    
 
     mounted() {
         const modo = this.$route.params.modoEdicion;
