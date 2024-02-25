@@ -23,8 +23,8 @@
                         
                         <div class="form-group">
                             <label for="proveeddor">Provedor</label>
-                            <select  v-for="(prov,index) in proveedor" :key="index" id="proveedor" name="proveedor" v-model="formData.proveedor">
-                                <option :value="prov.id" >{{ modoEdicion?  formData.proveedor : prov.nombre}}</option> //usar prov.nombre o proveedor.nombre
+                            <select  id="proveedor" name="proveedor" v-model="formData.proveedor" required>
+                                <option v-for="(prov,index) in proveedor" :key="index" :value="prov.id"  > {{ prov.nombre}}</option> //usar prov.nombre o proveedor.nombre
                                 
                             </select>
                         </div>
