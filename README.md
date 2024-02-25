@@ -1,4 +1,4 @@
-# textilfronted
+# Quality Tex - Gestión Textil
 
 ## Project setup
 ```
@@ -24,3 +24,5 @@ Design User Wiew for development
 --------------
 Project Tex
 --------------
+
+Pagina Web que que gestiona la creacion de registros de las pruebas de calidad realizadas a las telas, las cuales son usadas en el proceso de confección en una empresa textil.
