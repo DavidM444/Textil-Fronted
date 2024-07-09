@@ -5,21 +5,21 @@ import Login from './components/Login.vue'
 import Work from './components/Work.vue'
 import Datos from './components/Datos.vue'
 import Grafico from './components/Appgrafico.vue'
-import Try from './components/try.vue'
 import Form from './components/Form.vue'
 import Home from './components/Home.vue'
+import Admin from './components/Admin.vue'
 
 const routes = [
   
   {
     path: '/',
-    name: 'login',
-    component: Login
-  },
-  {
-    path: '/home',
     name: 'home',
     component: Home
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
   },
 
   {
@@ -59,9 +59,9 @@ const routes = [
   },
 
   {
-    path:'/try',
-    name:'try',
-    component: Try
+    path:'/admin',
+    name:'admin',
+    component: Admin
   }
 
 

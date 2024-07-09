@@ -111,7 +111,7 @@ import foter from './footer.vue'
 import _ from 'lodash';
 import { saveRegistry, getProveedor, updateRegistry, SwalFireAlert } from './peticiones/http'
 
-console.log("evento form ",);
+console.log("evento form ");
 
 export default{
     

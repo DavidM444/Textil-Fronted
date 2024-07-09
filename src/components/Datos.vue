@@ -213,7 +213,7 @@
 }
 @media (max-width: 550px) {
   table{
-    background-color: burlywood;
+    background-color: transparent;
   }
   
   table, .btn{

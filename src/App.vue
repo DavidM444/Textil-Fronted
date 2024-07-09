@@ -9,7 +9,8 @@ export default {
   name: "App",
   data: function () {
     return {
-      is_auth: false
+      is_auth: false,
+      is_user: false
     }
   },
   components: {
@@ -19,9 +20,9 @@ export default {
       this.is_auth = localStorage.getItem("isAuth") || false;
       console.log("entro en verify")
       if (this.is_auth == false)
-        this.$router.push({ name: "login" });
+        this.$router.push({ name: "home" });
       else{
-        this.$router.push({ name: "work" }
+        this.is_user? this.$router.push({name: "admin"}):this.$router.push({ name: "work" }
         )
       }  
     },
@@ -33,6 +34,7 @@ export default {
     },
     completedLogIn: function (data) {
       console.log("entro en complete login +: ",data);
+      this.is_user=data.role_user;
       localStorage.setItem("isAuth", true);
       localStorage.setItem("name", data.name);
       localStorage.setItem("token_access", data.token_access);
@@ -61,13 +63,14 @@ export default {
     this.verifyAuth();
   },
   
+  
 
 };
 </script>
   
 <style>
 .contenedor {
-  background-color: transparent;
+  background-color: #f2f7f5;
 }
 
 :root {
