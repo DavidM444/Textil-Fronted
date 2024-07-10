@@ -3,10 +3,7 @@
     <div class="row">
       <div class="col">
         <div class="container-fluid pt-3">
-          <div class="d-flex logo">
-            <img class="img-fluid mx-3" src="../assets/img/T.png" alt="">
-            <h1 class="text-center">Quality Tex</h1>
-          </div>
+          <Navbar/>
 
           <div class="pt-3">
             <div class="card login">
@@ -62,6 +59,8 @@ body{
   font-family: 'Poppins', sans-serif;
 }
 
+</style>
+<style scoped>
 
 .cont {
   background-color: #f2f7f5;
@@ -127,15 +126,18 @@ body{
 
 
 <script>
-import foot from './footer.vue'
+import foot from '../components/footer.vue'
 import Swal from 'sweetalert2'
 
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 
+import Navbar from '../components/Navbar.vue';
 
 export default {
+
   name: "Login",
+
   data: function(){
     return {
       user: {
@@ -192,9 +194,8 @@ export default {
       return token_decode.iss;
     }
   },
-  
   components: {
-    foot,
+    foot, Navbar
   }
 }
 console.log("entranod a login")

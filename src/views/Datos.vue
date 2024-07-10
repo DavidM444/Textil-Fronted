@@ -70,7 +70,7 @@
   <script>
 
   import axios from 'axios';
-  import { deletePeticion, getRegistros, SwalFireAlert } from './peticiones/http'
+  import { deletePeticion, getRegistros, SwalFireAlert } from '../components/peticiones/http'
   
   
   export default {
@@ -226,4 +226,4 @@
 
 
   </style>
-  
+  ../components/peticiones/http

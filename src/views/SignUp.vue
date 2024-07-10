@@ -4,14 +4,7 @@
             <img src="../assets/img/moonstarious-project-KbaSNX-6Vdo-unsplash.jpg" alt="">
         </div>
         <div class="col">
-            <div class="row">
-                <div class="container-fluid pt-3">
-                    <div class="d-flex logo">
-                        <img class="p-1" src="../assets/img/T.png" alt="">
-                        <h1 class="p-3 text-center">Quality Tex</h1>
-                    </div>
-                </div>
-            </div>
+            <Navbar/>
             <section class="mt-5 reg">
                 <h2 class="text-center">Registrarse</h2>
                 <form class="mb-3" @submit.prevent="processSignUp">
@@ -42,13 +35,14 @@
     <foot />
 </template>
 <script>
-import foot from './footer.vue'
+import foot from '../components/footer.vue'
 import axios from 'axios'
-import { SwalFireAlert } from './peticiones/http'
+import { SwalFireAlert } from '../components/peticiones/http'
+import Navbar from '../components/Navbar.vue'
 export default {
     name: "Singup",
     components: {
-        foot,
+        foot,Navbar,
     },
     data: function () {
         return {
@@ -125,4 +119,4 @@ $bg2: #f2f7f5;
 .reg h2 {
     color: #00473e;
 }
-</style>
+</style>../components/peticiones/http

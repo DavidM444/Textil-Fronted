@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import SingUp from './components/SignUp.vue'
-import Login from './components/Login.vue'
-import Work from './components/Work.vue'
-import Datos from './components/Datos.vue'
+import SingUp from './views/SignUp.vue'
+import Login from './views/Login.vue'
+import Work from './views/Work.vue'
+import Datos from './views/Datos.vue'
 import Grafico from './components/Appgrafico.vue'
 import Form from './components/Form.vue'
-import Home from './components/Home.vue'
+import Home from './views/Home.vue'
 import Admin from './components/Admin.vue'
 
 const routes = [
@@ -18,7 +18,7 @@ const routes = [
   },
   {
     path: '/login',
-    name: 'login',
+    name: 'Login',
     component: Login
   },
 

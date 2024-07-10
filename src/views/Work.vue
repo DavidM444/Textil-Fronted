@@ -104,7 +104,7 @@
 <script>
 
 import { jwtDecode } from "jwt-decode";
-import { SwalFireAlert } from './peticiones/http'
+import { SwalFireAlert } from '../components/peticiones/http'
 export default {
     name: "Work",
     data: function(){
@@ -252,4 +252,4 @@ p{    color: #4A4A4A;
         color: $green-dark;
     }
     
-}</style>
+}</style>../components/peticiones/http

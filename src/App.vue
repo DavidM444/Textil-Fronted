@@ -68,17 +68,13 @@ export default {
 };
 </script>
   
-<style>
+<style scoped>
 .contenedor {
   background-color: #f2f7f5;
 }
 
 :root {
   --clr: #222327;
-}
-
-.cabecera {
-  background-color: transparent;
 }
 </style>
   
