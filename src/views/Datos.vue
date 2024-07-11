@@ -8,7 +8,6 @@
           <thead>
             <tr>
               <th>ID</th>
-              <!-- Agrega más columnas según tus datos -->
               <th>Fecha</th>
               <th>Proveedor</th>
             
@@ -17,7 +16,6 @@
           <tbody>
             <tr v-for="(registro, index) in registros" :key="index" >
               <td>{{ registro.id }}</td>
-              <!-- Muestra más datos según tus necesidades -->
               <td>{{ registro.fecha }}</td>
               <td>{{ registro.proveedor }}</td>
              
@@ -77,7 +75,7 @@
 
     data() {
       return {
-        registros: [], 
+        registros: [],
         mostrarModal: false,
         detalle: {},
         registroSeleccionado: null, 
@@ -149,6 +147,8 @@
     },
 
     update(registro){
+
+      
       this.$emit('nuevoregistro', { registro, modoEdicion: true});
     },
     
@@ -162,6 +162,9 @@
       this.obtenerDatos();
     }
   };
+
+
+
   </script>
   
   <style lang="scss" scoped>

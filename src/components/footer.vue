@@ -1,7 +1,7 @@
 <template>
     <div class="ft">
         <footer class="bg-f py-4">
-        <div class="container">
+        <div>
             <div class="row">
                 <div class="col-md-6 text-center text-md-left">
                     <p>&copy; 2023 QualityTex. Todos los derechos reservados.</p>

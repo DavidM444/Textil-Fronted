@@ -100,8 +100,8 @@
                 </form>
                 
             </div>
-                   
-        </div><foter></foter> 
+            <foter></foter>       
+        </div> 
 </template>
 
 <script>

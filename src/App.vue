@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="contenedor">
+  <div id="app" class="contenedor ">
     <RouterView v-on:completedLogIn="completedLogIn" v-on:completedSignUp="completedSignUp" v-on:logOut="logOut" v-on:nuevoregistro="newre"></RouterView>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
       this.is_auth = localStorage.getItem("isAuth") || false;
       console.log("entro en verify")
       if (this.is_auth == false)
-        this.$router.push({ name: "home" });
+        this.$router.push({ name: "work" });
       else{
         this.is_user? this.$router.push({name: "admin"}):this.$router.push({ name: "work" }
         )
@@ -70,12 +70,26 @@ export default {
   
 <style scoped>
 .contenedor {
-  background-color: #f2f7f5;
+  margin: 0 auto;
+  max-width: 200ch;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-self: center;
 }
 
 :root {
   --clr: #222327;
 }
+</style>
+
+<style>
+body{
+  font-family: 'Poppins', sans-serif;
+  background-color: red;
+  
+}
+
 </style>
   
   

@@ -1,10 +1,9 @@
 <template>
-  <div class="container-fluid cont">
+  <div class="px-0 container-fluid">
     <div class="row">
       <div class="col">
-        <div class="container-fluid pt-3">
+        <div class="">
           <Navbar/>
-
           <div class="pt-3">
             <div class="card login">
               <h2 class="text-center">Iniciar Sesión</h2>
@@ -16,7 +15,7 @@
             </div>
           </div>
 
-          <div class="mt-3">
+          <div class="mt-3 p-2">
             <form class="w-auto mx-auto" action="Home.html" @submit.prevent="loginUserProcess">
               <div class="form-group ">
                 <label for="email">Correo electrónico:</label>
@@ -32,7 +31,7 @@
 
             </form>
           </div>
-          <div class="pt-5">
+          <div class="pt-5 p-2">
             <p class="fs-6 ">¿ No estas registrado ? <router-link to="/singup">Registrarse</router-link></p>
           </div>
 
@@ -49,35 +48,17 @@
       </div>
 
     </div>
-    
+     <foot></foot>
   </div>
-  <foot></foot>
+ 
 </template>
 
-<style>
-body{
-  font-family: 'Poppins', sans-serif;
-}
-
-</style>
 <style scoped>
+
 
 .cont {
   background-color: #f2f7f5;
   height: max-content;
-}
-
-.logo img {
-  max-width: 100px;
-  height: 100%;
-  border-radius: 20%;
-}
-
-.logo h1 {
-  align-self: center;
-  font-size: 3em;
-  font-weight: 600;
-  color: #00473e
 }
 
 .login {
@@ -102,21 +83,6 @@ body{
 }
 
 
-.logo {
-  animation: myAnim 5s ease 0s 1 normal none;
-}
-
-@keyframes myAnim {
-  0% {
-    opacity: 0;
-    transform: translateX(-250px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
 
 .btn-login{
   background-color: #00473e;

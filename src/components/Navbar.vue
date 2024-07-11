@@ -1,20 +1,11 @@
 <template>
-    <div>
-        <header class="container-fluid head ">
-            <div class="row">
-                 <div class="col-sm-8 text-md-left d-flex logo">
-                    <img src="../assets/img/T.png" alt="logo">
-                    <h1 class="align-self-center">Quality Tex</h1>
-                </div>
-
-                <div class="col-sm-4 text-center align-self-center">
-                    <RouterLink class="btn btn-primary link" to="/login">Iniciar Sesion</RouterLink>
-                    <RouterLink class="btn btn-success link" to="/singup">Registrarse</RouterLink>
-                </div>  
-            </div>
-        </header>
-
+    <div class="container-fluid head">
+        <div class="col-sm-8 text-md-left d-flex logo">
+            <img src="../assets/img/T.png" alt="logo">
+            <h1 class="align-self-center">Quality Tex</h1>
+        </div>
     </div>
+
 </template>
 <style scoped lang="scss">
 
@@ -29,33 +20,38 @@ $title: #75d28f;
 }
 .head{
     background-color: #00473e;
-}
-.link{
-  
-    margin: 1ch;
+    border-radius: 0 0 1rem 1rem;
 }
 
-
-.bt {
-    margin-left: auto;
-}
 
 .logo img {
     max-width: 8em;
     height: 100%;
     border-radius: 20%;
     padding: 1rem;
-    
-    
-
 }
 
 .logo h1 {
     color: $title;
     text-align: center;
     font-size: 3rem;
+}
 
 
+.logo {
+  animation: myAnim 5s ease 0s 1 normal none;
+}
+
+@keyframes myAnim {
+  0% {
+    opacity: 0;
+    transform: translateX(-250px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 </style>
 <script>

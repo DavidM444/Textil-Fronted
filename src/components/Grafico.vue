@@ -1,55 +1,61 @@
 <template>
-  <div class="head">
-    <h2 class="text-center py-3 title">Datos Textiles</h2>
-  </div>
-  
   <div>
-    <div>
-      <h2 class="subtitle text-center">Gráfico Escala De Grises</h2>
+    <div class="head">
+      <h2 class="text-center py-3 title">Datos Textiles</h2>
     </div>
-    <div class="row pt-1">
-      <div class="col-md-6 offset-md-3">
-        <div class="card border border-dark">
-          <div class="card-header bg-dark"></div>
-          <div class="card-body">
-            <Bar v-if="loaded" :data="chartData" :options="chartOptions" />
+
+    <div>
+      <div>
+        <h2 class="subtitle text-center">Gráfico Escala De Grises</h2>
+      </div>
+      <div class="row pt-1">
+        <div class="col-md-6 offset-md-3">
+          <div class="card border border-dark">
+            <div class="card-header bg-dark"></div>
+            <div class="card-body">
+              <Bar v-if="loaded" :data="chartData" :options="chartOptions" />
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <section class="bart">
-    <div class="container-fluid pt-3">
-    <div class="col-md-6 offset-md-3">
-      <p class="text-center">La Escala de Grises para la Transferencia de Color se utiliza para evaluar visualmente la
-        transferencia de color o manchado debido a pruebas de solidez del color.</p>
-    </div>
-  </div>
-  <div class="container-fluid col text-center">
-    <h2 class="subtitle">Gráfico Nivel de Pilling</h2>
+    <section class="bart">
+      <div class="container-fluid pt-3">
+        <div class="col-md-6 offset-md-3">
+          <p class="text-center">La Escala de Grises para la Transferencia de Color se utiliza para evaluar visualmente
+            la
+            transferencia de color o manchado debido a pruebas de solidez del color.</p>
+        </div>
+      </div>
+      <div class="container-fluid col text-center">
+        <h2 class="subtitle">Gráfico Nivel de Pilling</h2>
 
-    <div class="col-md-6 offset-md-3">
-      <Doughnut v-if="loaded" :data="doughnutData" :options="chartOptions" />
-    </div>
+        <div class="col-md-6 offset-md-3">
+          <Doughnut v-if="loaded" :data="doughnutData" :options="chartOptions" />
+        </div>
+      </div>
+      <div class="container-fluid mt-4 ">
+        <div class="col-md-6 offset-md-3">
+          <p>La prueba de pilling en tela tiene como objetivo evaluar la resistencia de un tejido a la formación de
+            bolitas o
+            "pills".
+            Las bolitas son pequeñas acumulaciones de fibras que se forman en la superficie de la tela debido al roce
+            durante
+            el uso y lavado.</p>
+
+          <p>El pilling puede afectar la apariencia estética de la tela, haciendo que se vea desgastada o envejecida
+            prematuramente.</p>
+          <p>La prueba de pilling es importante en la industria textil para evaluar la durabilidad y la calidad
+            percibida de un tejido.</p>
+        </div>
+
+
+
+      </div>
+    </section>
+    <Foot />
   </div>
-  <div class="container-fluid mt-4 ">
-    <div class="col-md-6 offset-md-3">
-      <p>La prueba de pilling en tela tiene como objetivo evaluar la resistencia de un tejido a la formación de bolitas o
-        "pills".
-        Las bolitas son pequeñas acumulaciones de fibras que se forman en la superficie de la tela debido al roce durante
-        el uso y lavado.</p>
 
-      <p>El pilling puede afectar la apariencia estética de la tela, haciendo que se vea desgastada o envejecida
-        prematuramente.</p>
-      <p>La prueba de pilling es importante en la industria textil para evaluar la durabilidad y la calidad
-        percibida de un tejido.</p>
-    </div>
-   
-
-
-  </div>
-  </section>
-   <Foot/>
 </template>
 <script>
 
@@ -103,7 +109,7 @@ export default {
       this.chartData = {
         labels: this.etiquetas,
         datasets: [
-          {  label: 'Valoracion',data: this.valores, backgroundColor: ['#4F6F52', '#80BCBD', '#F3B664', '#FFB534'] }
+          { label: 'Valoracion', data: this.valores, backgroundColor: ['#4F6F52', '#80BCBD', '#F3B664', '#FFB534'] }
         ]
       }
 
@@ -127,19 +133,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 $green: #065147;
-  .title{
-    color: whitesmoke;
-  }
-  .subtitle{
-    color: $green;
-    padding-top: 1rem;
-    font-size: 1.5em;
-    
-  }
-  .head{
-    background-color: $green;
-  }
-  
+
+.title {
+  color: whitesmoke;
+}
+
+.subtitle {
+  color: $green;
+  padding-top: 1rem;
+  font-size: 1.5em;
+
+}
+
+.head {
+  background-color: $green;
+}
 </style>
