@@ -87,23 +87,24 @@ export default {
 }
 </script>
 
+<style lang="scss">
+
+
+
+</style>
+
 <style scoped lang="scss">
-
-
-
-.header{
-    display: flex;
-    background-color: #00473e;
-    
-}
-
-
 $tex-w: #f2f7f5;
 $bgcolor: #00473e;
 $nar: #faae2b;
 $succes: #3f7354;
 $title: #75d28f;
 
+.header{
+    display: flex;
+    background-color: #00473e;
+    
+}
 
 .link {
 
@@ -114,31 +115,6 @@ $title: #75d28f;
 .bt {
     margin-left: auto;
 }
-
-
-/*
-
-.est{
-    background-color: #f2f7f5;
-    padding: 1% 5%;
-    h2{
-        color: $bgcolor;
-        
-    }
-    strong{
-        color: $succes;
-    }
-    h3{
-        font-weight: 550;
-        font-size: 1rem;
-        color: $succes;
-    }
-   
-}
-.est p{
-    font-size: smaller;
-}
-*/
 .est2 {
 
     padding: 1% 5%;
@@ -148,7 +124,7 @@ $title: #75d28f;
     }
 
     p {
-        color: #f2f7f5;
+        color: --bs-body-color;
         font-size: larger;
     }
 }

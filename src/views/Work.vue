@@ -40,23 +40,22 @@
         </section>
 
         <section class="imagenes">
-            <div class="d-sm-flex justify-content-center rot">
-                <div class="align-self-center  card ">
-                    <div class="card-body d-flex">
+            <div class="d-sm-flex rot">
+                <div class="align-self-center card v2">
+                    <div class="card-body">
                         <p>Nuestro compromiso con la calidad en la producción textil se refleja en cada prenda</p>
 
                     </div>
                 </div>
-                <div class=" d-flex align-self-center">
+                <div class=" d-flex align-self-center justify-content-center v2">
                     <img src="../assets/img/knit-g6e83076f5_640-min.jpg" alt="Imagen" id="slide">
                 </div>
 
-
-                <div class="align-self-center  card w-auto">
-                    <div class="card-body d-flex">
+ 
+                <div class="align-self-center card v2">
+                    <div class="card-body">
                         <p>Nuestras telas cumplen con los estándares más altos de calidad, para garantizar
                             la satisfacción de nuestros clientes.</p>
-
                     </div>
                 </div>
             </div>
@@ -205,20 +204,24 @@ $red: #7fe17b;
 
 
 .rot {
+
+    justify-content: center;
     img {
         box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.48);
         max-width: 100%;
-
+    }
+    .v2{
+        flex: 1 0 30%;
     }
 }
 .imagenes {
+
     padding: 2%;
     background-color: $green-dark;
     .card{
         border-color: #00473e;
         background-color: $green-dark;
         margin: 2rem;
-    
     }
 
 
