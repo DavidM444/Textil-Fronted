@@ -160,7 +160,8 @@
     },
     mounted() {
       this.obtenerDatos();
-    }
+    },
+    props: []
   };
 
 

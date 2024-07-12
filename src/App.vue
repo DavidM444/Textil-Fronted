@@ -20,7 +20,7 @@ export default {
       this.is_auth = localStorage.getItem("isAuth") || false;
       console.log("entro en verify")
       if (this.is_auth == false)
-        this.$router.push({ name: "work" });
+        this.$router.push({ name: "home" });
       else{
         this.is_user? this.$router.push({name: "admin"}):this.$router.push({ name: "work" }
         )
@@ -84,6 +84,8 @@ export default {
 </style>
 
 <style>
+
+
 body{
   font-family: 'Poppins', sans-serif;
   background-color: red;
