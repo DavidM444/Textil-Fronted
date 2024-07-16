@@ -8,6 +8,7 @@ import Grafico from './components/Appgrafico.vue'
 import Form from './components/Form.vue'
 import Home from './views/Home.vue'
 import Admin from './components/Admin.vue'
+import Try from './views/Try.vue'
 
 const routes = [
   
@@ -33,7 +34,7 @@ const routes = [
     component:Work
   },
   {
-    path: '/work/form/:modoEdicion/:registro',
+    path: '/work/form/:id',
     name: "formUp",
     component: Form,
     props: true
@@ -62,8 +63,13 @@ const routes = [
     path:'/admin',
     name:'admin',
     component: Admin
+  },
+  /*
+  {
+    path: '/try',
+    name: 'try',
+    component: Try
   }
-
 
 ]
 
