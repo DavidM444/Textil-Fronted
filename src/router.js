@@ -70,7 +70,7 @@ const routes = [
     name: 'try',
     component: Try
   }
-
+*/
 ]
 
 const router = createRouter({

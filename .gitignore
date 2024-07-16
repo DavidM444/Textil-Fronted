@@ -24,4 +24,5 @@ pnpm-debug.log*
 
 assets/
 webpack.config.js
-src/components/views/Try.vue
+
+Try.vue
