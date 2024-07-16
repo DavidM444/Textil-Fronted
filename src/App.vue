@@ -54,7 +54,7 @@ export default {
 
     },
     newre: function(datas){
-      this.$router.push({name:'formUp',params: { modoEdicion: datas.modoEdicion, registro: JSON.stringify(datas.registro)}})
+      this.$router.push({name:'formUp',params: { id: datas.registro.id}})
       console.log("data evento_ ", datas.registro)
     }
   },
