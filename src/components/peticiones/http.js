@@ -2,7 +2,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2'
 
 export function getProveedor(hdr){
-    return axios.get('http://localhost:8081/proveedor',hdr); 
+    return  axios.get('http://localhost:8081/proveedor',hdr); 
 };
 
 export function saveRegistry (dataRegistry,headers){
@@ -23,6 +23,12 @@ export function deletePeticion(idDel, head){
 export function getRegistros(headers){
     return  axios.get("http://localhost:8081/registro", headers);
 }
+
+//only 1 register
+export function getUnicoRegistro(headers, id){
+    return axios.get("http://localhost:8081/registro/"+id,headers);
+}
+
 export function getDatosGraphic(headers){
     return axios.get("http://localhost:8081/registro/datos",headers);
 }
