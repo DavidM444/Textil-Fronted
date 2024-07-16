@@ -48,12 +48,9 @@
           <p>La prueba de pilling es importante en la industria textil para evaluar la durabilidad y la calidad
             percibida de un tejido.</p>
         </div>
-
-
-
       </div>
     </section>
-    <Foot />
+    <Foot/>
   </div>
 
 </template>
